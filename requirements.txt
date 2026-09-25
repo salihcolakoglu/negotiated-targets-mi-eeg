@@ -1,0 +1,2 @@
+# Fast verification of all retained results; no training dependencies.
+numpy==2.2.6

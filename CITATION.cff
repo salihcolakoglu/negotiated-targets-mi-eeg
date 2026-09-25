@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the accompanying manuscript."
+type: software
+title: "Negotiated label targets for motor imagery EEG decoding: CSP and EEGNet code"
+version: 2.0.0
+authors:
+  - family-names: "Çolakoğlu"
+    given-names: "Salih"
+  - family-names: "Onat"
+    given-names: "Mustafa"
+  - family-names: "Korhan"
+    given-names: "Nuri"
+license: MIT
