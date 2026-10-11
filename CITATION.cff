@@ -1,13 +1,30 @@
 cff-version: 1.2.0
-message: "If you use this code, please cite the accompanying manuscript."
+message: "Please cite this software and retained results. Cite the accompanying submitted manuscript separately when discussing the study. See README.md and LICENSING.md."
 type: software
-title: "Negotiated label targets for motor imagery EEG decoding: CSP and EEGNet code"
-version: 2.0.0
+title: "Walsh-coded and negotiated targets for motor imagery EEG decoding: code and retained results"
+version: 2.1.0
+date-released: 2026-10-11
 authors:
   - family-names: "Çolakoğlu"
     given-names: "Salih"
+    affiliation: "Department of Electrical and Electronics Engineering, Faculty of Engineering, Marmara University, Istanbul, Türkiye"
   - family-names: "Onat"
     given-names: "Mustafa"
+    affiliation: "Department of Electrical and Electronics Engineering, Faculty of Engineering, Marmara University, Istanbul, Türkiye"
   - family-names: "Korhan"
     given-names: "Nuri"
-license: MIT
+    affiliation: "Burdur Mehmet Akif Ersoy University, Burdur, Türkiye"
+repository-code: "https://github.com/salihcolakoglu/negotiated-targets-mi-eeg"
+url: "https://github.com/salihcolakoglu/negotiated-targets-mi-eeg"
+license:
+  - MIT
+  - CC-BY-4.0
+  - CC-BY-ND-4.0
+abstract: "Software and retained numerical results for two controlled motor imagery EEG experiments using CSP–CNN and EEGNet on three public datasets. License scope is defined by LICENSING.md; upstream dataset content retains its original terms."
+keywords:
+  - Motor imagery
+  - EEG decoding
+  - Walsh codes
+  - Negotiated targets
+  - EEGNet
+  - Reproducibility

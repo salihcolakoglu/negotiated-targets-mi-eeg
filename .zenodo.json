@@ -1,0 +1,44 @@
+{
+  "title": "Walsh-coded and negotiated targets for motor imagery EEG decoding: code and retained results",
+  "upload_type": "software",
+  "publication_date": "2026-10-11",
+  "version": "2.1.0",
+  "access_right": "open",
+  "license": "mit",
+  "creators": [
+    {
+      "name": "Çolakoğlu, Salih",
+      "affiliation": "Department of Electrical and Electronics Engineering, Faculty of Engineering, Marmara University, Istanbul, Türkiye"
+    },
+    {
+      "name": "Onat, Mustafa",
+      "affiliation": "Department of Electrical and Electronics Engineering, Faculty of Engineering, Marmara University, Istanbul, Türkiye"
+    },
+    {
+      "name": "Korhan, Nuri",
+      "affiliation": "Burdur Mehmet Akif Ersoy University, Burdur, Türkiye"
+    }
+  ],
+  "description": "<p>Software and retained numerical results accompanying <em>Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence</em>, by Salih Çolakoğlu, Mustafa Onat and Nuri Korhan. Manuscript V4.4 was submitted to the <em>Journal of Neuroscience Methods</em> on 2 October 2026.</p><p>The package includes preparation, CSP–CNN and EEGNet training, the CSP–LDA reference, result summarization and verification code, 1,415 retained training records and 800 EEGNet prediction files. The experiments use BNCI2014-001, BNCI2014-002 and BNCI2014-004. Raw EEG recordings and filtered or epoched signal caches are not included; preparation scripts obtain recordings from the providers through MOABB.</p><p><strong>Licensing:</strong> MIT applies to the software. CC BY 4.0 applies to the authors' original documentation and generated predictions, targets and numerical summaries, to the extent copyright or similar rights apply. Source dataset content, including the included <code>y_train</code> and <code>y_test</code> class-label arrays, retains the providers' CC BY-ND 4.0 terms. The data licensor is the Institute for Knowledge Discovery, Graz University of Technology. The record's primary software license does not override this mixed scope; consult <code>LICENSING.md</code> and <code>DATA_ATTRIBUTION.md</code>. Earlier MIT permissions remain valid.</p><p>Version 2.1.0 updates documentation, attribution, licensing scope and archival metadata. Scientific code and the stored result archive are unchanged from the public v2.0 package. Please cite this software release, the accompanying study and the original dataset publications when applicable.</p>",
+  "keywords": [
+    "motor imagery",
+    "EEG decoding",
+    "Walsh codes",
+    "negotiated targets",
+    "EEGNet",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/salihcolakoglu/negotiated-targets-mi-eeg",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "references": [
+    "BNCI Horizon 2020 dataset catalogue: https://bnci-horizon-2020.eu/database/data-sets. BNCI2014-001, BNCI2014-002 and BNCI2014-004; licensor: Institute for Knowledge Discovery, Graz University of Technology; CC BY-ND 4.0.",
+    "Tangermann et al. (2012). Review of the BCI Competition IV. https://doi.org/10.3389/fnins.2012.00055",
+    "Steyrl et al. (2016). Random forests in non-invasive sensorimotor rhythm brain–computer interfaces: A practical and convenient non-linear classifier. https://doi.org/10.1515/bmt-2014-0117",
+    "Leeb et al. (2007). Brain-computer communication: motivation, aim, and impact of exploring a virtual apartment. https://doi.org/10.1109/TNSRE.2007.906956"
+  ]
+}

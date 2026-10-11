@@ -1,6 +1,6 @@
 # Negotiated targets for motor imagery EEG
 
-Code and retained results for **Negotiated label targets for motor imagery EEG decoding: a controlled evaluation with CSP features and EEGNet**, by Salih Çolakoğlu, Mustafa Onat and Nuri Korhan. Code package **v2.0**, accompanying manuscript **v4.1**.
+Code and retained results for **Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence**, by Salih Çolakoğlu, Mustafa Onat and Nuri Korhan. Code and results release **v2.1.0**. The accompanying manuscript **v4.4** was submitted to the *Journal of Neuroscience Methods* on 2 October 2026.
 
 The study compares fixed, cumulative, label-anchored and smoothed training targets on three public datasets. Experiment 1 contains 615 CSP–CNN fits; Experiment 2 contains 800 EEGNet fits. The independent sample is 32 participants.
 
@@ -77,8 +77,18 @@ Accuracy uses nearest-codeword decoding for Walsh outputs. Probability scores us
 
 This release covers the two completed matched-budget experiments and the specified classical reference. Historical experiments described separately in the supplement are not additional training modes here.
 
-Raw EEG is obtained from the [BNCI database](https://bnci-horizon-2020.eu/database/data-sets) and remains subject to its providers' terms. The implementation follows [EEGNet](https://doi.org/10.1088/1741-2552/aace8c), [Walsh-coded outputs](https://arxiv.org/abs/2104.00035) and [negotiated representations](https://ijnes.org/index.php/ijnes/article/view/957); implementation details are in the accompanying manuscript. AI tools assisted code preparation and checking; the authors are responsible for the work.
+Raw EEG is obtained from the [BNCI database](https://bnci-horizon-2020.eu/database/data-sets). The three source datasets are licensed under **CC BY-ND 4.0** by the **Institute for Knowledge Discovery, Graz University of Technology**. See [dataset attribution and access](DATA_ATTRIBUTION.md) for the individual dataset descriptions and related publications. Raw EEG and filtered/epoched signal caches are not included in this repository; upstream data licenses remain unchanged. The implementation follows [EEGNet](https://doi.org/10.1088/1741-2552/aace8c), [Walsh-coded outputs](https://arxiv.org/abs/2104.00035) and [negotiated representations](https://ijnes.org/index.php/ijnes/article/view/957); implementation details are in the accompanying manuscript. AI tools assisted code preparation and checking; the authors are responsible for the work.
 
-Code is distributed under the **MIT license**. See `LICENSE` and `CITATION.cff`.
+Software is distributed under **MIT**. The authors' original documentation, generated predictions, targets and numerical summaries use **CC BY 4.0**. Source dataset content, including the true class-label arrays stored with predictions, retains **CC BY-ND 4.0**. See [Licensing](LICENSING.md) for the scope and notices. Earlier MIT permissions remain valid.
+
+## How to cite
+
+Use [`CITATION.cff`](CITATION.cff) to cite this software and retained results as version **2.1.0**, released on **11 October 2026**. GitHub also provides a citation through the repository's citation menu.
+
+Cite the accompanying manuscript separately when discussing the study:
+
+> Çolakoğlu, S., Onat, M., and Korhan, N. (2026). Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence. Manuscript V4.4 submitted to the Journal of Neuroscience Methods, 2 October 2026.
+
+Please cite the original dataset sources listed in [dataset attribution and access](DATA_ATTRIBUTION.md). Explain changes that affect reproduction. Academic citation and software change-description requests do not add conditions to MIT; CC BY 4.0 attribution and modification notices apply to the original non-code materials within its scope.
 
 Release checks on Python 3.12/Windows passed stored-result verification, short CPU training with TensorFlow and PyTorch, and all 32 CSP–LDA accuracy comparisons. These checks did not repeat the full 1,415 training fits or a fresh download of the EEG recordings.
