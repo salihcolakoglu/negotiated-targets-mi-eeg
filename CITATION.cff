@@ -3,6 +3,7 @@ message: "Please cite this software and retained results. Cite the accompanying 
 type: software
 title: "Walsh-coded and negotiated targets for motor imagery EEG decoding: code and retained results"
 version: 2.1.0
+doi: "10.5281/zenodo.23290274"
 date-released: 2026-10-11
 authors:
   - family-names: "Çolakoğlu"

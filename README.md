@@ -1,5 +1,7 @@
 # Negotiated targets for motor imagery EEG
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23290274.svg)](https://doi.org/10.5281/zenodo.23290274)
+
 Code and retained results for **Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence**, by Salih Çolakoğlu, Mustafa Onat and Nuri Korhan. Code and results release **v2.1.0**. The accompanying manuscript **v4.4** was submitted to the *Journal of Neuroscience Methods* on 2 October 2026.
 
 The study compares fixed, cumulative, label-anchored and smoothed training targets on three public datasets. Experiment 1 contains 615 CSP–CNN fits; Experiment 2 contains 800 EEGNet fits. The independent sample is 32 participants.
@@ -84,6 +86,8 @@ Software is distributed under **MIT**. The authors' original documentation, gene
 ## How to cite
 
 Use [`CITATION.cff`](CITATION.cff) to cite this software and retained results as version **2.1.0**, released on **11 October 2026**. GitHub also provides a citation through the repository's citation menu.
+
+The archived **v2.1.0 software and retained results** are available on Zenodo: [10.5281/zenodo.23290274](https://doi.org/10.5281/zenodo.23290274). This DOI identifies the software and results archive; the submitted journal manuscript is cited separately below.
 
 Cite the accompanying manuscript separately when discussing the study:
 
