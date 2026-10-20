@@ -1,0 +1,8 @@
+# Tested with Python 3.12.14. Install the appropriate PyTorch CPU/CUDA wheel
+# separately if required by the host; a new work protocol records exact versions.
+numpy==2.2.6
+scipy==1.15.3
+torch==2.5.1
+scikit-learn==1.7.2
+mne==1.12.1
+joblib==1.6.0

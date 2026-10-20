@@ -1,0 +1,79 @@
+{
+  "status": "PREPARED_INPUT_EXECUTION_AND_RETAINED_VERIFICATION_CHECKED",
+  "training_controller_sha256": "39793f1319dd2a5ac7762ffaa001c80fc79b08ccc98516e76d7f9b97454221ce",
+  "retained_verifier_sha256": "0a3b45bcd6ddc9017b9c3beb46ed69e9648c3b2b355a28680b519f030cccf852",
+  "generated_controller_QA": {
+    "status": "PASS_PORTABLE_TRAINING_CONTROLLER_SYNTHETIC_QA",
+    "checks": 41,
+    "controller_sha256": "39793f1319dd2a5ac7762ffaa001c80fc79b08ccc98516e76d7f9b97454221ce",
+    "helper_sha256": "04c8c2640d488972a491df7a33f8dd33c0e8c8c2fff65cb2ef194862aa195011",
+    "real_EEG_reads": 0,
+    "real_checkpoint_reads": 0,
+    "scientific_campaign_fits": 0,
+    "synthetic_engineering_one_epoch_fits": 2,
+    "full_campaign_completion_reproduced": false,
+    "scope": "Three actual CLI init/validate routes in three CWDs; closed complete-fit gates; identity/hash and source-write guards; two tiny generated EEGNet kernel fits. CUDA calibration training and full400/1350 fits not rerun."
+  },
+  "retained_result_verification": {
+    "status": "PASS_PORTABLE_RETAINED_EXTENSION_VERIFICATION",
+    "prediction_files": 4020,
+    "counts": {
+      "lee54": 1350,
+      "lee_calibration80_20": 1350,
+      "shu_2x2": 1320
+    },
+    "auxiliary_counts": {
+      "shu_neural_fits": 400,
+      "shu_classical_fits": 50,
+      "shu_temperatures": 330,
+      "shu_source_validation": 60,
+      "lee_classical": 54
+    },
+    "raw_EEG_reads": 0,
+    "checkpoint_reads": 0,
+    "training_or_inference": 0,
+    "W4": "PENDING_NOT_INCLUDED",
+    "scope": "Hashes, exact identities, native accuracy/probability metrics, Lee/SHU condition means;400 neural training budgets/source inheritance,50 classical budgets,330 reserved20 T inputs/NLL,60 sourceCV metrics and54 Lee classical predictions. Optimizer optimum and historical inferential tests are retained but not rerun by this NumPy-only verifier."
+  },
+  "training_QA_scope": "No fresh full400/1350-model rerun; exact historical numerical kernels, public path/runtime adapters, generated-input CLI boundary checks. Calibration runner requires CUDA. Completed W4 retained-result verification is separate from fresh public training; no second full public W4 training rerun is claimed.",
+  "generated_W4_QA": {
+    "status": "PASS_PUBLIC_W4_PREPARED_REFERENCE_CLI_QA",
+    "checks": 17,
+    "helper_sha256": "6604dc3ee84e69cc401be0d4ffd57ab29d4c90d1d8bbcf4e55971c2c34ff50c6",
+    "controller_sha256": "766acf20f8373b74629fc25790f3830baf2877399b0fff5677a2dc569f5f87a3",
+    "base_controller_sha256": "39793f1319dd2a5ac7762ffaa001c80fc79b08ccc98516e76d7f9b97454221ce",
+    "frozen_source_sha256": {
+      "code/lee_core.py": "bf1639f7afb931a2d7fa5c0ff7de10daaecd6b85a8ab539efd4809e0ca09ed48",
+      "code/lee_data.py": "49b4326d390f9f5d4bf363e829a41f8b8902bf668033fab3439ac61ca4184740",
+      "code/training.py": "796602ecdf68673f9fa70d64f0c8e78ea44cf26158fc007b31d356a8799669af",
+      "code/campaign.py": "d53a5e57127b18e742b3b53bb8a33b7ef0d432d92fdca8f4affa4547b343aeb8",
+      "ops/run_campaign-V1.0.py": "b237ae3760aba7e97d0a7bc969d4c4a18fcd549b7555b4f1ce0eb2869c5bd15e",
+      "ops/monitor_campaign-V1.0.py": "7b3990a82142da65a468c2bce334dddb0d9ff70f418492c17003034dd60c5607",
+      "analysis/final_analysis.py": "925079efadbf9aac4ee0f5fc4a793dce192ec99c80f1b3ac3cd37ba7ba1070f5"
+    },
+    "real_EEG_or_checkpoint_object_reads": 0,
+    "synthetic_neural_fits": 0,
+    "actual_W4_fits": 0,
+    "source_scope": "Explicit synthetic NONMODEL/NONARRAY placeholders only for complete reference metadata; native270-model test gate and phase-aware input guards unmocked. No full W4 completed-flow reproduction claim."
+  },
+  "retained_W4_verification": {
+    "status": "PASS_PORTABLE_W4_RETAINED_VERIFICATION",
+    "new_prediction_files": 270,
+    "historical_prediction_files_reused": 540,
+    "participants": 54,
+    "starts": 5,
+    "participant_means": 162,
+    "accuracy_tests": 2,
+    "Holm_family_size": 2,
+    "original_five_test_family_modified": false,
+    "source_protocol_sha256": "1702e81efcc5dcadb04546acdcac6be90645aaac4b56fe238e57f939d73f49d4",
+    "archive_sha256": "cd1e6b4c73f0e9ffef1613390a763d222b824cb0798d15cb8347aee1d51e03ae",
+    "scope": "Independent retained native/probability metrics and paired t/Holm replay; saved training metrics/timing are provenance only, not retraining proof or a controlled speed ranking.",
+    "limitations": "Exploratory after Lee outcomes had been seen; pointwise95% intervals are not multiplicity-adjusted intervals.",
+    "raw_EEG_reads": 0,
+    "checkpoint_reads": 0,
+    "training_or_inference": 0
+  },
+  "retained_W4_verifier_sha256": "36a88cd8cd2187acea05e8c93611930145fbf1451adbef2a61b053aa8e6eed1b",
+  "historical_base_verification_scope_note": "The preserved base verifier's PENDING_NOT_INCLUDED marker applies to its immutable three-study archive only; the completed W4 addendum has a separate manifest/verifier."
+}

@@ -1,0 +1,272 @@
+{
+  "source_protocol_sha256": "493378c9982feff6182216eb7406f68799e1435284cd80d39d91b258130fcab8",
+  "public_path_redaction": true,
+  "not_original_historical_hash_manifest": true,
+  "protocol": {
+    "version": "1.0",
+    "status": "frozen_before_day2_performance",
+    "frozen_at": "2026-10-18T09:09:39+03:00",
+    "timezone": "Europe/Istanbul",
+    "prior_use": {
+      "user_confirmed_no_prior_team_method_or_hyperparameter_development_use": true,
+      "received_date": "2026-10-18",
+      "source": "Direct user answer in this chat"
+    },
+    "dataset": {
+      "name": "Lee2019_MI",
+      "doi": "10.5524/100542",
+      "article_doi": "10.1093/gigascience/giz002",
+      "license": "CC0-1.0",
+      "subjects": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ],
+      "training": "day 1 offline EEG_MI_train",
+      "test": "day 2 offline EEG_MI_train",
+      "excluded_source_variables": [
+        "EEG_MI_test online run",
+        "resting data",
+        "EMG channels"
+      ],
+      "n_train_per_subject": 100,
+      "n_test_per_subject": 100,
+      "n_classes": 2,
+      "class_counts_each_day": {
+        "left_hand": 50,
+        "right_hand": 50
+      },
+      "class_mapping": {
+        "left_hand": 0,
+        "right_hand": 1
+      },
+      "source_events": {
+        "left_hand": 2,
+        "right_hand": 1
+      },
+      "eeg_channels": 62,
+      "source_sampling_hz": 1000,
+      "processed_shape": [
+        100,
+        62,
+        512
+      ]
+    },
+    "preprocessing": {
+      "filter_hz": [
+        4,
+        38
+      ],
+      "filter_method": "MNE IIR default fourth-order Butterworth forward-backward on continuous EEG",
+      "epoch_seconds": [
+        0,
+        4
+      ],
+      "epoch_endpoint": "inclusive at source sampling; 4001 samples",
+      "resample_hz": 128,
+      "resample_method": "MNE default FFT after epoching; 512 output samples",
+      "input_units": "uV float32",
+      "channel_order": "original published 62 EEG names, identical between days",
+      "trial_rejection": "none; stop on unexpected missing, nonfinite or dropped trials",
+      "normalization": "per-channel mean/std fit on all Day-1 trial/time values only; float64 std+1e-6; apply to both days"
+    },
+    "model": {
+      "architecture": "EEGNet-8,2",
+      "conditions": {
+        "S0": "softmax hard targets",
+        "W0": "fixed Walsh targets",
+        "W1": "cumulative negotiated Walsh targets",
+        "W2": "anchored correctness-gated negotiated Walsh targets",
+        "W3": "classwise Walsh target smoothing"
+      },
+      "walsh_bits": 16,
+      "code_rows": "first two binary Walsh rows, unchanged from v2.1.0 release",
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "batch_size": 16,
+      "dropout": 0.5,
+      "phases": 10,
+      "epochs_per_phase": 30,
+      "epochs_total": 300,
+      "target_rate": 0.03,
+      "zero_based_updates": "After phase p, rate .03*p; used by phase p+1. Final p9 update not used for fitting.",
+      "model_selection": "none; final fixed-budget model only",
+      "mixed_precision": false,
+      "deterministic_algorithms": true
+    },
+    "execution": {
+      "planned_fits": 1350,
+      "planned_classical_reference_fits": 54,
+      "parallel_gpu_workers": 1,
+      "download_workers": 2,
+      "threads_per_training_process": 2,
+      "timing_pilot_reused_as_confirmatory_result": false,
+      "checkpoint": "every 30-epoch phase, including optimizer and all RNG states",
+      "final_day2_evaluations_per_fit": 1,
+      "per_phase_test_evaluations": 0
+    },
+    "classical_reference": {
+      "reference_id": "CSP6_TWO_ENDED_LDA_SVD_LEE",
+      "frozen_decision_date": "2026-10-18",
+      "decision": "Use a conventional two-ended six-feature CSP and default SVD LDA as a NEW secondary contextual reference for the Lee2019 extension.",
+      "old_manuscript_reference_is_unchanged": true,
+      "difference_from_archived_reference": "The archived binary expression np.r_[:3, -3:] selected only the first three filters. This Lee reference explicitly selects [0,1,2,n_channels-3,n_channels-2,n_channels-1], six distinct filters, and is disclosed as a new reference.",
+      "canonical_arithmetic_source": "GITHUB_ZENODO_YAYIN_v2.1.0_2026-10-11/package/negotiated-targets-mi-eeg-v2.1.0/src/csp/features.py",
+      "canonical_classifier_source": "GITHUB_ZENODO_YAYIN_v2.1.0_2026-10-11/package/negotiated-targets-mi-eeg-v2.1.0/src/csp/classical.py",
+      "input": {
+        "prepared_data_units": "uV",
+        "channels": 62,
+        "trials_per_day": 100,
+        "samples": 512,
+        "filter_hz": [
+          4,
+          38
+        ],
+        "resample_hz": 128,
+        "extra_8_30_Hz_filter": false
+      },
+      "spatial_fit_data": "Day 1 only; no day-2 signal or label is passed to fit_csp.",
+      "covariance": "Arithmetic mean of np.cov(trial) for each day-1 class, without trace normalization or shrinkage.",
+      "whitening": "Eigenvectors of cov_left + cov_right, eigenvalues descending, eigenvalue floor 1e-10.",
+      "selection": "Three largest and three smallest eigenvalues of the whitened left-hand covariance.",
+      "features": "Six log population variances, np.log(np.var(W @ trial, axis=1)); no additional feature scaling.",
+      "LDA": {
+        "implementation": "sklearn.discriminant_analysis.LinearDiscriminantAnalysis()",
+        "solver": "svd",
+        "shrinkage": null,
+        "priors": null,
+        "tol": 0.0001
+      },
+      "label_mapping": {
+        "left_hand": 0,
+        "right_hand": 1
+      },
+      "probability_column_assertion": "lda.classes_.tolist() must equal [0,1]",
+      "metrics": {
+        "accuracy": "argmax class probability",
+        "NLL": "mean negative log true-class probability clipped to [1e-12,1]",
+        "ECE": "15 equal-width bins, matching released EEGNet core"
+      },
+      "hyperparameter_search": null,
+      "confirmatory_comparisons_added": false,
+      "full_data_access_condition": "Root freezes the study protocol and supplies its SHA256 before this runner opens day-2 inputs.",
+      "progress_output": "Completion per subject only; no interim condition comparison.",
+      "resume": "Reuse only participant JSON with matching protocol/script, metadata and input NPZ hashes, prediction hash, dimensions and class order. Preserve orphan prediction exports in recovery/ before recomputing; reject any changed completed identity.",
+      "result_files": [
+        "subject_XX_classical.json",
+        "subject_XX_classical_predictions.npz",
+        "classical_summary.csv after all 54 subjects",
+        "classical_reference_manifest.json after all 54 subjects"
+      ]
+    },
+    "analysis": {
+      "independent_unit": "participant after averaging the five seeds within condition",
+      "n": 54,
+      "primary_contrast": "W2-W0",
+      "family": [
+        "W2-W0",
+        "W1-W0",
+        "W2-W1",
+        "W2-W3",
+        "W0-S0"
+      ],
+      "test": "two-sided paired t-test",
+      "multiplicity": "Holm across exactly these five new contrasts",
+      "alpha": 0.05,
+      "confidence_intervals": "pointwise unadjusted 95%",
+      "secondary_metrics": [
+        "NLL",
+        "ECE with 15 equal-width bins"
+      ],
+      "secondary_scope": "descriptive; no additional confirmatory test family",
+      "no_interim_inferential_analysis": true,
+      "required_complete_fits": 1350,
+      "old_dataset_results": "preserved separately; no pooling with previous 32 participants"
+    },
+    "exception_policy": {
+      "expected_complete_subjects": 54,
+      "automatic_exclusion": false,
+      "behavior": "Retry network transfers; stop and document corrupt/unexpected data or software failure. No exclusion for low accuracy or unfavorable direction."
+    },
+    "code_sha256": {
+      "code/analysis/final_analysis.py": "86749d8abca6b4138ef93347c4e906a91cd6af275055fcab7b8c29677e77517f",
+      "code/analysis/test_final_analysis.py": "ba97bb0729ef3939edbe8c3b9435260bd56be876588daf550c3356098fc51068",
+      "code/lee_core.py": "5614c5fc08a1ed4e5f57596241d4dfafe5df5c027b8a17dce166108b8abd2638",
+      "code/lee_data.py": "49b4326d390f9f5d4bf363e829a41f8b8902bf668033fab3439ac61ca4184740",
+      "code/lee_train.py": "38e205bf740dc20dc92be6263f3b3aa36fc4649721985c63f7273fba0f6455a1",
+      "code/verify_adapter.py": "28a4564d9e5e3a886946dfb5139b3a1a4eca0e35449a265326bf6ca510354991",
+      "prepare/check_classical_reference.py": "fcff5a8ce650f9aa66f7059dc1e1f68fa055e159c158cc19c74ad6d9fa6ebe95",
+      "prepare/check_preparation.py": "f7872fbb0d0ab84b8e431300726f4df973547b6031f3e6739d7ad64333c5f804",
+      "prepare/classical_reference.py": "7a58a2490b1a2c8d1a7d9347276d0401395180e085d01366c980f685d157f619",
+      "prepare/prepare_lee2019.py": "ffbb7b6cdda83187dc82c64d0f20e04a6ff03470bedc2a09e9a164aff68e968b",
+      "ops/benchmark_parallel.py": "bf59a4e4be9f6a6c0aa2cd4569b34de79e102da2a4ec0f06b90a06aaa97eb965",
+      "ops/check_ops.py": "b4f4e6eb77a317bed27c033883284940a6c820ca72f10f61f01b55a47257b145",
+      "ops/download_lee.py": "7b3dcf1bb92220c7f029b0df46d0b99dbf8051696778533abea9055175d05290",
+      "ops/freeze_protocol.py": "d2ea3b01238a4c836ab8ec2f0ddbe0a499ec655cc059ac6d8ef7634403a46771",
+      "ops/run_campaign.py": "68323d05a1043b20ad7a967a8f74fc4bee3d0bb73ef1d33e519076484ee551d6"
+    },
+    "environment_sha256": "2f188b2ecb5de4ca6e48de5bb2e622cb467cb6f6bf3505201e9091c6619f502a",
+    "source_md5_manifest_sha256": "20b1ef60db5877a8508bfb9fb04a206cf9173d884bf48850ce2627d55c957cb4",
+    "pilot_sha256": "924a91ab79daa09005d981135ad6cccb490378789f648067155e284c660fb571",
+    "original_release": "https://github.com/salihcolakoglu/negotiated-targets-mi-eeg/tree/v2.1.0",
+    "software_doi": "10.5281/zenodo.23290274"
+  }
+}

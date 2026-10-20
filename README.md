@@ -1,10 +1,36 @@
 # Negotiated targets for motor imagery EEG
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23290274.svg)](https://doi.org/10.5281/zenodo.23290274)
+Code and retained results for **Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence**, by Salih Çolakoğlu, Mustafa Onat and Nuri Korhan.
 
-Code and retained results for **Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence**, by Salih Çolakoğlu, Mustafa Onat and Nuri Korhan. Code and results release **v2.1.0**. The accompanying manuscript **v4.4** was submitted to the *Journal of Neuroscience Methods* on 2 October 2026.
+**Version 2.2.0 release scope.** The additional material accompanies an IEEE Access manuscript revision under preparation. This description does not imply journal acceptance or publication. This v2.2.0 release contains the completed 270-fit W4 control and its independent final audit; the older [v2.1.0 DOI](https://doi.org/10.5281/zenodo.23290274) identifies only that earlier release.
 
-The study compares fixed, cumulative, label-anchored and smoothed training targets on three public datasets. Experiment 1 contains 615 CSP–CNN fits; Experiment 2 contains 800 EEGNet fits. The independent sample is 32 participants.
+The archive keeps the two original, matched-budget experiments (615 CSP–CNN and 800 EEGNet fits in the same 32 people) and adds separate evidence:
+
+| Material | Independent analysis unit | Scope |
+|---|---|---|
+| Original experiments | 32 people, not 1,415 independent observations | Fixed/cumulative/anchored/smoothed target rules and classical references |
+| Lee2019 external-data evaluation | 54 people's five-start means | 1,350 EEGNet fits plus 54 CSP–LDA references; fixed before the team's first second-day evaluation |
+| Lee2019 held-out calibration | The same 54 people, analyzed separately | 1,350 new models, 80 fitting and 20 calibration trials; exploratory |
+| SHU architecture/output control | 15 target people, conditional on 10 source people | 400 neural fits across source controls, source models and targets; exploratory |
+| Lee2019 W4 mechanism control | The same 54 people, analyzed separately | 270 completed ungated-anchoring fits, paired with 540 historical W1/W2 records; a separate exploratory two-contrast family and retained-result verifier |
+
+The controlled comparisons distinguish accuracy from confidence. They do not establish general superiority, prevention of forgetting, or clinical readiness. Repeated models, recording days and reused participants are not pooled into a larger independent sample.
+
+For the new studies, start with [the extension guide](extensions/README.md). Its portable training commands require explicitly prepared inputs with the documented boundaries; they are separate from the no-training verification of retained predictions. [Prepared input contracts](extensions/PREPARED_INPUTS.md) specify the exact roles and preprocessing.
+
+Verify the additional retained results without EEG or model loading:
+
+```bash
+python -m pip install -r extensions/requirements-verification.txt
+python extensions/verify_retained.py --report outputs/extension_verification.json
+python extensions/verify_w4.py --report outputs/w4_verification.json
+```
+
+The original extension verifier uses NumPy and the standard library. The separate
+W4 paired-test verifier also uses SciPy; its pinned verification dependencies are
+kept separate from the original requirements and from training dependencies.
+
+The following original commands remain available and their scientific code and result bytes are preserved.
 
 ## 1. Check the reported results
 
@@ -77,22 +103,22 @@ Accuracy uses nearest-codeword decoding for Walsh outputs. Probability scores us
 - `src/verify_results.py`, `src/summarize.py`: checking and analysis.
 - `reference/`: retained results/predictions and the optional CSP reference.
 
-This release covers the two completed matched-budget experiments and the specified classical reference. Historical experiments described separately in the supplement are not additional training modes here.
+The original commands cover the two original matched-budget experiments and their specified classical reference. The later studies have separate commands, protocols and result archives under `extensions/`; their sample sizes and statistical families are not merged with the original experiments.
 
 Raw EEG is obtained from the [BNCI database](https://bnci-horizon-2020.eu/database/data-sets). The three source datasets are licensed under **CC BY-ND 4.0** by the **Institute for Knowledge Discovery, Graz University of Technology**. See [dataset attribution and access](DATA_ATTRIBUTION.md) for the individual dataset descriptions and related publications. Raw EEG and filtered/epoched signal caches are not included in this repository; upstream data licenses remain unchanged. The implementation follows [EEGNet](https://doi.org/10.1088/1741-2552/aace8c), [Walsh-coded outputs](https://arxiv.org/abs/2104.00035) and [negotiated representations](https://ijnes.org/index.php/ijnes/article/view/957); implementation details are in the accompanying manuscript. AI tools assisted code preparation and checking; the authors are responsible for the work.
 
-Software is distributed under **MIT**. The authors' original documentation, generated predictions, targets and numerical summaries use **CC BY 4.0**. Source dataset content, including the true class-label arrays stored with predictions, retains **CC BY-ND 4.0**. See [Licensing](LICENSING.md) for the scope and notices. Earlier MIT permissions remain valid.
+Software is distributed under **MIT**. The authors' original documentation, generated predictions, targets and numerical summaries use **CC BY 4.0**. The original BNCI source-label arrays retain **CC BY-ND 4.0**. Later Lee/OpenBMI labels retain **CC0-1.0**, and SHU labels retain **CC BY 4.0**. These notices do not relicense source recordings. See [Licensing](LICENSING.md) for the scope and notices. Earlier MIT permissions remain valid.
 
 ## How to cite
 
-Use [`CITATION.cff`](CITATION.cff) to cite this software and retained results as version **2.1.0**, released on **11 October 2026**. GitHub also provides a citation through the repository's citation menu.
+Use [`CITATION.cff`](CITATION.cff) for the software version actually used. The candidate metadata names version 2.2.0 without assigning the older release's DOI to it. The new DOI will be linked only after the release and its Zenodo record have been verified.
 
-The archived **v2.1.0 software and retained results** are available on Zenodo: [10.5281/zenodo.23290274](https://doi.org/10.5281/zenodo.23290274). This DOI identifies the software and results archive; the submitted journal manuscript is cited separately below.
+The historical [v2.1.0 software archive](https://doi.org/10.5281/zenodo.23290274) remains available with its original code, results and citation. Its DOI is a software DOI, not a journal article DOI.
 
-Cite the accompanying manuscript separately when discussing the study:
+The accompanying study is:
 
-> Çolakoğlu, S., Onat, M., and Korhan, N. (2026). Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence. Manuscript V4.4 submitted to the Journal of Neuroscience Methods, 2 October 2026.
+> Çolakoğlu, S., Onat, M., and Korhan, N. (2026). Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence. Manuscript prepared for IEEE Access review.
 
-Please cite the original dataset sources listed in [dataset attribution and access](DATA_ATTRIBUTION.md). Explain changes that affect reproduction. Academic citation and software change-description requests do not add conditions to MIT; CC BY 4.0 attribution and modification notices apply to the original non-code materials within its scope.
+Please cite the relevant original data sources in [dataset attribution and access](DATA_ATTRIBUTION.md). Academic citation and software change-description requests do not add conditions to MIT; attribution and modification notices apply to original non-code material within CC BY 4.0's scope.
 
-Release checks on Python 3.12/Windows passed stored-result verification, short CPU training with TensorFlow and PyTorch, and all 32 CSP–LDA accuracy comparisons. These checks did not repeat the full 1,415 training fits or a fresh download of the EEG recordings.
+The retained-result checks recompute saved predictions and numerical summaries. Generated-input CLI checks exercise initialization, validation, gates and small kernel smoke tests. They do not claim a fresh rerun of every full training experiment, a fresh raw-data download, or bitwise training equivalence on another platform. The extension guide documents these distinctions.

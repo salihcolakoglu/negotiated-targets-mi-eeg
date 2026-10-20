@@ -1,0 +1,1496 @@
+{
+  "source_protocol_sha256": "d5689f8e7f0db11450f541ce915d2331302f1fc63d542926f2b20596d10ea7da",
+  "public_path_redaction": true,
+  "not_original_historical_hash_manifest": true,
+  "protocol": {
+    "schema": "shu-fbcnet-full-comparison-v1",
+    "status": "FROZEN_BEFORE_CAMPAIGN",
+    "frozen_at": "2026-10-19T15:55:04.778337+03:00",
+    "timezone": "Europe/Istanbul",
+    "full_campaign_launch_authorized": true,
+    "public_preregistration": false,
+    "scope": "Exploratory SHU development comparison; source-person first-day controls then fixed15-person later-day evaluation",
+    "groups": {
+      "source": [
+        21,
+        6,
+        10,
+        18,
+        19,
+        25,
+        8,
+        7,
+        15,
+        12
+      ],
+      "evaluation": [
+        22,
+        14,
+        17,
+        4,
+        1,
+        16,
+        2,
+        5,
+        11,
+        20,
+        9,
+        24,
+        3,
+        23,
+        13
+      ],
+      "source_later_days_never_open": true
+    },
+    "counts": {
+      "cv_neural_fits": 80,
+      "main_neural_fits": 320,
+      "classical_fits": 50,
+      "target_temperature_records": 330,
+      "cv_validation_records": 60,
+      "tests": 1320
+    },
+    "expected_artifact_unions": {
+      "model_freeze": 2530,
+      "test_artifacts": 2640,
+      "probability_metric_rows": 3240
+    },
+    "conditions": {
+      "A": {
+        "architecture": "EEGNet",
+        "output": "CE2"
+      },
+      "B": {
+        "architecture": "EEGNet",
+        "output": "fixed_Walsh16"
+      },
+      "C": {
+        "architecture": "adapted_FBCNet",
+        "output": "CE2"
+      },
+      "D": {
+        "architecture": "adapted_FBCNet",
+        "output": "fixed_Walsh16"
+      }
+    },
+    "transfer": {
+      "all_neural_conditions": "DIRECT, no alignment, no independent teacher, no target negotiation; alpha=0",
+      "source": "own condition and seed; all weights and BatchNorm buffers copied, source state immutable",
+      "target": "all layers train; fresh Adam, not source optimizer",
+      "common_initial_backbone": "same initialization within architecture at source construction only; CE/Walsh trained source states can differ"
+    },
+    "first_day": {
+      "sampling_hz": 128,
+      "channels": 29,
+      "samples_per_trial": 512,
+      "target_fit_n": 50,
+      "target_fit_per_class": 25,
+      "target_temperature_n": 20,
+      "target_temperature_per_class": 10,
+      "source_fit_n_per_person": 70,
+      "same_partitions_across_methods_and_seeds": true,
+      "labels": {
+        "left_hand": 0,
+        "right_hand": 1
+      },
+      "no_subject_or_trial_exclusion": true,
+      "original_events_checked": true,
+      "headerless_subject001_day4": "retain original first row;99 trials49left50right"
+    },
+    "source_controls": {
+      "held_out_people": [
+        21,
+        6,
+        10,
+        18,
+        19,
+        25,
+        8,
+        7,
+        15,
+        12
+      ],
+      "source_train_people_per_fold": 9,
+      "source_train_n": 630,
+      "heldout_adaptation_n": 50,
+      "heldout_validation_n": 20,
+      "temperature_not_fitted_on_CV_validation": true,
+      "neural_fits": 80,
+      "classical_fits": 20,
+      "validation_records": 60,
+      "role": "descriptive source-only control; all conditions retained, no outcome-dependent selection"
+    },
+    "main_training": {
+      "source_n": 700,
+      "source_models": 20,
+      "target_models": 300,
+      "random_starts": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "epochs": 300,
+      "blocks": 10,
+      "epochs_per_block": 30,
+      "batch_size": 16,
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "optimizer_steps_by_fit_n": {
+        "50": 1200,
+        "630": 12000,
+        "700": 13200
+      },
+      "early_stopping": false,
+      "engineering_pilot_models_eligible": false,
+      "repeat_pilot_as_main": false
+    },
+    "seed_rules": {
+      "cv_source_init": "510000+heldout",
+      "cv_source_batch": "610000+heldout",
+      "cv_target_init": "710000+heldout",
+      "cv_target_batch": "810000+heldout",
+      "main_source_init": "110000+seed",
+      "main_source_batch": "310000+seed",
+      "main_target_init": "210000+seed",
+      "main_target_batch": "410000+seed",
+      "global_training_RNG": "reset to batch seed after build/source load; Python/NumPy/Torch CPU/CUDA",
+      "sample_order_generator": "separate torch.Generator using batch seed; exact restart state stored"
+    },
+    "preprocessing": {
+      "variant": "CLIP only",
+      "fit_on_training_only": true,
+      "definition": "channel mean/(population SD+1e-6), symmetrically clipped by per-channel0.999 linear quantile of abs(training z)",
+      "source_scaling": "each source own70 within fold/main; never heldout source or target adaptation statistics",
+      "target_scaling": "own50 adaptation trials only",
+      "compute_dtype": "float64 through filtering then float32 network",
+      "rationale": "preexisting outlier diagnosis and source controls; not chosen by new later-day accuracy"
+    },
+    "filterbank": {
+      "fs": 128.0,
+      "bands_hz": [
+        [
+          4.0,
+          8.0
+        ],
+        [
+          8.0,
+          12.0
+        ],
+        [
+          12.0,
+          16.0
+        ],
+        [
+          16.0,
+          20.0
+        ],
+        [
+          20.0,
+          24.0
+        ],
+        [
+          24.0,
+          28.0
+        ],
+        [
+          28.0,
+          32.0
+        ],
+        [
+          32.0,
+          36.0
+        ],
+        [
+          36.0,
+          40.0
+        ]
+      ],
+      "transition_hz": 2.0,
+      "single_pass_passband_loss_db": 3.0,
+      "single_pass_stop_attenuation_db": 30.0,
+      "two_pass_edge_passband_loss_db": 6.0,
+      "two_pass_stop_attenuation_db": 60.0,
+      "implementation": "cheb2ord Wn -> cheby2 SOS -> sosfiltfilt pertrial",
+      "padtype": "odd",
+      "padlen": 27,
+      "orders": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "critical_Wn_hz": [
+        [
+          3.3074613740067744,
+          9.628068497700815
+        ],
+        [
+          7.111794963810637,
+          13.432402087504682
+        ],
+        [
+          11.018173765364734,
+          17.33878088905877
+        ],
+        [
+          14.960251402953235,
+          21.280858526647275
+        ],
+        [
+          18.918323628908922,
+          25.23893075260297
+        ],
+        [
+          22.884350185019237,
+          29.20495730871329
+        ],
+        [
+          26.854199036023683,
+          33.17480615971772
+        ],
+        [
+          30.82519384028227,
+          37.14580096397632
+        ],
+        [
+          34.79504269128672,
+          41.115649814980756
+        ]
+      ],
+      "sos": [
+        [
+          [
+            0.028812069924214444,
+            -0.03754575664123678,
+            0.02881206992421444,
+            1.0,
+            -1.6664240089476474,
+            0.7715690576361647
+          ],
+          [
+            1.0,
+            -1.9927362363753018,
+            0.9999999999999998,
+            1.0,
+            -1.7991674464410214,
+            0.8448997172402253
+          ],
+          [
+            1.0,
+            -1.7634173562122222,
+            0.9999999999999998,
+            1.0,
+            -1.7767725453075582,
+            0.9218209836960245
+          ],
+          [
+            1.0,
+            -1.9757262875063837,
+            1.0000000000000002,
+            1.0,
+            -1.9210549591315782,
+            0.9590288305721134
+          ]
+        ],
+        [
+          [
+            0.02881206992421443,
+            -0.031291707412914975,
+            0.028812069924214426,
+            1.0,
+            -1.530583306967896,
+            0.788286672317752
+          ],
+          [
+            1.0,
+            -1.9514215524158947,
+            1.0,
+            1.0,
+            -1.6633240704577015,
+            0.8269814796073671
+          ],
+          [
+            1.0,
+            -1.5606619871093184,
+            1.0,
+            1.0,
+            -1.6066129608037854,
+            0.9297872447841945
+          ],
+          [
+            1.0,
+            -1.8853525309486179,
+            0.9999999999999997,
+            1.0,
+            -1.801324385218695,
+            0.9508120324838655
+          ]
+        ],
+        [
+          [
+            0.028812069924214423,
+            -0.023204590417118656,
+            0.028812069924214416,
+            1.0,
+            -1.3242474579404182,
+            0.7951295498838702
+          ],
+          [
+            1.0,
+            -1.8569995844034801,
+            1.0,
+            1.0,
+            -1.4752357721715363,
+            0.819864484628088
+          ],
+          [
+            1.0,
+            -1.2955930212591062,
+            1.0,
+            1.0,
+            -1.369760415879867,
+            0.9334276471193754
+          ],
+          [
+            1.0,
+            -1.7248639657564013,
+            1.0,
+            1.0,
+            -1.6173216507115962,
+            0.9471038304030143
+          ]
+        ],
+        [
+          [
+            0.028812069924214426,
+            -0.013877646034365799,
+            0.028812069924214426,
+            1.0,
+            -1.0633433123661808,
+            0.7991762931721147
+          ],
+          [
+            1.0,
+            -1.7032954891211107,
+            1.0,
+            1.0,
+            -1.2341331998672105,
+            0.8157129837279924
+          ],
+          [
+            1.0,
+            -0.979787894790937,
+            1.0000000000000002,
+            1.0,
+            -1.078432697958984,
+            0.9356489843491044
+          ],
+          [
+            1.0,
+            -1.499037093062929,
+            1.0000000000000004,
+            1.0,
+            -1.3730022005572744,
+            0.9448552980644078
+          ]
+        ],
+        [
+          [
+            0.028812069924214413,
+            -0.0037977578245105064,
+            0.02881206992421441,
+            1.0,
+            -0.7597186092638445,
+            0.8020537649524069
+          ],
+          [
+            1.0,
+            -1.4917576778536918,
+            1.0,
+            1.0,
+            -0.9474604511655262,
+            0.8127865077309191
+          ],
+          [
+            1.0,
+            -0.6258101153562904,
+            0.9999999999999998,
+            1.0,
+            -0.7446844713142746,
+            0.9372483476141287
+          ],
+          [
+            1.0,
+            -1.2161230191937782,
+            1.0,
+            1.0,
+            -1.0768959907573277,
+            0.9432429539526952
+          ]
+        ],
+        [
+          [
+            0.02881206992421443,
+            0.006586051078118507,
+            0.028812069924214423,
+            1.0,
+            -0.42569797521563046,
+            0.8043677971794013
+          ],
+          [
+            1.0,
+            -1.2283754004281624,
+            1.0,
+            1.0,
+            -0.6255776995144656,
+            0.8104482562753644
+          ],
+          [
+            1.0,
+            -0.24743395178221553,
+            1.0000000000000002,
+            1.0,
+            -0.3816721141309126,
+            0.9385415903320353
+          ],
+          [
+            1.0,
+            -0.8868228720712986,
+            1.0000000000000004,
+            1.0,
+            -0.7400515958927153,
+            0.9419432330943106
+          ]
+        ],
+        [
+          [
+            0.028812069924214416,
+            0.016844635991076336,
+            0.028812069924214416,
+            1.0,
+            -0.07439684842226756,
+            0.8064165250751214
+          ],
+          [
+            1.0,
+            -0.9222255636756245,
+            1.0,
+            1.0,
+            -0.2805755059908672,
+            0.8083892856329743
+          ],
+          [
+            1.0,
+            0.14072351150328694,
+            0.9999999999999999,
+            1.0,
+            -0.0034907814993313975,
+            0.9396888378380452
+          ],
+          [
+            1.0,
+            -0.5237151710181112,
+            1.0,
+            1.0,
+            -0.3752689633700179,
+            0.9407932332417458
+          ]
+        ],
+        [
+          [
+            0.028812069924214437,
+            -0.016844635991076426,
+            0.028812069924214437,
+            1.0,
+            0.0743968484222666,
+            0.8064165250751208
+          ],
+          [
+            1.0,
+            0.9222255636756261,
+            1.0,
+            1.0,
+            0.28057550599086734,
+            0.8083892856329741
+          ],
+          [
+            1.0,
+            -0.14072351150328838,
+            1.0000000000000002,
+            1.0,
+            0.003490781499330133,
+            0.9396888378380455
+          ],
+          [
+            1.0,
+            0.5237151710181117,
+            1.0,
+            1.0,
+            0.3752689633700176,
+            0.940793233241746
+          ]
+        ],
+        [
+          [
+            0.028812069924214426,
+            -0.006586051078118441,
+            0.028812069924214426,
+            1.0,
+            0.4256979752156306,
+            0.8043677971794017
+          ],
+          [
+            1.0,
+            1.2283754004281613,
+            1.0000000000000002,
+            1.0,
+            0.6255776995144654,
+            0.8104482562753649
+          ],
+          [
+            1.0,
+            0.2474339517822164,
+            0.9999999999999999,
+            1.0,
+            0.3816721141309129,
+            0.9385415903320351
+          ],
+          [
+            1.0,
+            0.8868228720712976,
+            1.0,
+            1.0,
+            0.7400515958927147,
+            0.9419432330943109
+          ]
+        ]
+      ],
+      "dtype": "float64",
+      "source_author_default_is_causal_lfilter": true,
+      "adaptation_not_byte_identical_author_preprocessing": true
+    },
+    "FBCNet_adaptation": {
+      "source": "Pinned Mane et al. author implementation and MIT license in sources/author",
+      "spatial_filters_per_band": 32,
+      "bands": 9,
+      "activation": "Swish",
+      "window_samples": 128,
+      "windows": 4,
+      "feature_count": 1152,
+      "variance": "sample, correction1, clamp1e-6..1e6 then log",
+      "constraint_timing": "initial fresh model and after each Adam step; eval forward is pure",
+      "adaptations": [
+        "128Hz and four1s windows",
+        "SOS forward/backward bank using returned cheb2ord Wn instead of author default causal lfilter",
+        "explicit sample variance and clamp",
+        "raw logits for controlled CE/Walsh outputs",
+        "constraints outside eval forward"
+      ],
+      "not_byte_identical_author_network_or_published_training_recipe": true
+    },
+    "EEGNet": {
+      "feature_count": 256,
+      "core": "byte-identical audited preceding pilot; layer/BN state and maxnorm recorded by trainer"
+    },
+    "classical": {
+      "SINGLE_CSP_LDA": {
+        "condition": "SINGLE_CSP_LDA",
+        "feature_count": 6,
+        "n_bands": 1,
+        "fit_trials": 50,
+        "classes": [
+          0,
+          1
+        ],
+        "class_counts": [
+          25,
+          25
+        ],
+        "CSP": {
+          "n_components": 6,
+          "reg": "ledoit_wolf",
+          "cov_est": "concat",
+          "rank": "full",
+          "norm_trace": false,
+          "component_order": "alternate",
+          "component_order_meaning": "three largest and three smallest eigenvalues, alternating",
+          "log": true,
+          "transform_into": "average_power"
+        },
+        "LDA": {
+          "solver": "lsqr",
+          "shrinkage": "auto",
+          "priors": [
+            0.5,
+            0.5
+          ]
+        },
+        "no_feature_selection": true,
+        "no_test_fit_or_refit": true,
+        "feature": "MNE log average squared CSP output; per-band six components",
+        "source_information": "Target50 only; unlike transferred networks, no additional source-person training information",
+        "filtering": {
+          "band_hz": [
+            8.0,
+            30.0
+          ],
+          "fs": 128.0,
+          "order": 4,
+          "implementation": "scipy.signal.butter SOS + sosfiltfilt per trial",
+          "sos": [
+            [
+              0.02877934090909824,
+              0.05755868181819648,
+              0.02877934090909824,
+              1.0,
+              -0.4854022733631819,
+              0.21649150880052825
+            ],
+            [
+              1.0,
+              2.0,
+              1.0,
+              1.0,
+              -1.26441445744979,
+              0.4714110488360367
+            ],
+            [
+              1.0,
+              -2.0,
+              1.0,
+              1.0,
+              -0.20410347642160195,
+              0.6031530688054403
+            ],
+            [
+              1.0,
+              -2.0,
+              1.0,
+              1.0,
+              -1.6744668577222879,
+              0.8212357135375417
+            ]
+          ],
+          "padtype": "odd",
+          "padlen": 27,
+          "n_components": 6,
+          "reg": "ledoit_wolf",
+          "covariance": "concat",
+          "rank": "full",
+          "norm_trace": false,
+          "component_order": "alternate",
+          "component_order_meaning": "largest,smallest,second-largest,second-smallest,third-largest,third-smallest eigenvalues",
+          "feature": "MNE log average squared CSP output (average_power), not an added test normalization",
+          "lda_solver": "lsqr",
+          "lda_shrinkage": "auto",
+          "lda_priors": [
+            0.5,
+            0.5
+          ],
+          "comparison_scope": "Different band/spatial-feature pipeline from CNN; CSP-versus-CNN is not a pure classifier-head contrast."
+        },
+        "pipeline_scope": "Fixed8–30Hz Butterworth4/SOS oddpad27 zero-phase +6CSP +LDA"
+      },
+      "BANK_CSP_LDA": {
+        "condition": "BANK_CSP_LDA",
+        "feature_count": 54,
+        "n_bands": 9,
+        "fit_trials": 50,
+        "classes": [
+          0,
+          1
+        ],
+        "class_counts": [
+          25,
+          25
+        ],
+        "CSP": {
+          "n_components": 6,
+          "reg": "ledoit_wolf",
+          "cov_est": "concat",
+          "rank": "full",
+          "norm_trace": false,
+          "component_order": "alternate",
+          "component_order_meaning": "three largest and three smallest eigenvalues, alternating",
+          "log": true,
+          "transform_into": "average_power"
+        },
+        "LDA": {
+          "solver": "lsqr",
+          "shrinkage": "auto",
+          "priors": [
+            0.5,
+            0.5
+          ]
+        },
+        "no_feature_selection": true,
+        "no_test_fit_or_refit": true,
+        "feature": "MNE log average squared CSP output; per-band six components",
+        "source_information": "Target50 only; unlike transferred networks, no additional source-person training information",
+        "filtering": {
+          "fs": 128.0,
+          "bands_hz": [
+            [
+              4.0,
+              8.0
+            ],
+            [
+              8.0,
+              12.0
+            ],
+            [
+              12.0,
+              16.0
+            ],
+            [
+              16.0,
+              20.0
+            ],
+            [
+              20.0,
+              24.0
+            ],
+            [
+              24.0,
+              28.0
+            ],
+            [
+              28.0,
+              32.0
+            ],
+            [
+              32.0,
+              36.0
+            ],
+            [
+              36.0,
+              40.0
+            ]
+          ],
+          "transition_hz": 2.0,
+          "single_pass_passband_loss_db": 3.0,
+          "single_pass_stop_attenuation_db": 30.0,
+          "two_pass_edge_passband_loss_db": 6.0,
+          "two_pass_stop_attenuation_db": 60.0,
+          "implementation": "cheb2ord Wn -> cheby2 SOS -> sosfiltfilt pertrial",
+          "padtype": "odd",
+          "padlen": 27,
+          "orders": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "critical_Wn_hz": [
+            [
+              3.3074613740067744,
+              9.628068497700815
+            ],
+            [
+              7.111794963810637,
+              13.432402087504682
+            ],
+            [
+              11.018173765364734,
+              17.33878088905877
+            ],
+            [
+              14.960251402953235,
+              21.280858526647275
+            ],
+            [
+              18.918323628908922,
+              25.23893075260297
+            ],
+            [
+              22.884350185019237,
+              29.20495730871329
+            ],
+            [
+              26.854199036023683,
+              33.17480615971772
+            ],
+            [
+              30.82519384028227,
+              37.14580096397632
+            ],
+            [
+              34.79504269128672,
+              41.115649814980756
+            ]
+          ],
+          "sos": [
+            [
+              [
+                0.028812069924214444,
+                -0.03754575664123678,
+                0.02881206992421444,
+                1.0,
+                -1.6664240089476474,
+                0.7715690576361647
+              ],
+              [
+                1.0,
+                -1.9927362363753018,
+                0.9999999999999998,
+                1.0,
+                -1.7991674464410214,
+                0.8448997172402253
+              ],
+              [
+                1.0,
+                -1.7634173562122222,
+                0.9999999999999998,
+                1.0,
+                -1.7767725453075582,
+                0.9218209836960245
+              ],
+              [
+                1.0,
+                -1.9757262875063837,
+                1.0000000000000002,
+                1.0,
+                -1.9210549591315782,
+                0.9590288305721134
+              ]
+            ],
+            [
+              [
+                0.02881206992421443,
+                -0.031291707412914975,
+                0.028812069924214426,
+                1.0,
+                -1.530583306967896,
+                0.788286672317752
+              ],
+              [
+                1.0,
+                -1.9514215524158947,
+                1.0,
+                1.0,
+                -1.6633240704577015,
+                0.8269814796073671
+              ],
+              [
+                1.0,
+                -1.5606619871093184,
+                1.0,
+                1.0,
+                -1.6066129608037854,
+                0.9297872447841945
+              ],
+              [
+                1.0,
+                -1.8853525309486179,
+                0.9999999999999997,
+                1.0,
+                -1.801324385218695,
+                0.9508120324838655
+              ]
+            ],
+            [
+              [
+                0.028812069924214423,
+                -0.023204590417118656,
+                0.028812069924214416,
+                1.0,
+                -1.3242474579404182,
+                0.7951295498838702
+              ],
+              [
+                1.0,
+                -1.8569995844034801,
+                1.0,
+                1.0,
+                -1.4752357721715363,
+                0.819864484628088
+              ],
+              [
+                1.0,
+                -1.2955930212591062,
+                1.0,
+                1.0,
+                -1.369760415879867,
+                0.9334276471193754
+              ],
+              [
+                1.0,
+                -1.7248639657564013,
+                1.0,
+                1.0,
+                -1.6173216507115962,
+                0.9471038304030143
+              ]
+            ],
+            [
+              [
+                0.028812069924214426,
+                -0.013877646034365799,
+                0.028812069924214426,
+                1.0,
+                -1.0633433123661808,
+                0.7991762931721147
+              ],
+              [
+                1.0,
+                -1.7032954891211107,
+                1.0,
+                1.0,
+                -1.2341331998672105,
+                0.8157129837279924
+              ],
+              [
+                1.0,
+                -0.979787894790937,
+                1.0000000000000002,
+                1.0,
+                -1.078432697958984,
+                0.9356489843491044
+              ],
+              [
+                1.0,
+                -1.499037093062929,
+                1.0000000000000004,
+                1.0,
+                -1.3730022005572744,
+                0.9448552980644078
+              ]
+            ],
+            [
+              [
+                0.028812069924214413,
+                -0.0037977578245105064,
+                0.02881206992421441,
+                1.0,
+                -0.7597186092638445,
+                0.8020537649524069
+              ],
+              [
+                1.0,
+                -1.4917576778536918,
+                1.0,
+                1.0,
+                -0.9474604511655262,
+                0.8127865077309191
+              ],
+              [
+                1.0,
+                -0.6258101153562904,
+                0.9999999999999998,
+                1.0,
+                -0.7446844713142746,
+                0.9372483476141287
+              ],
+              [
+                1.0,
+                -1.2161230191937782,
+                1.0,
+                1.0,
+                -1.0768959907573277,
+                0.9432429539526952
+              ]
+            ],
+            [
+              [
+                0.02881206992421443,
+                0.006586051078118507,
+                0.028812069924214423,
+                1.0,
+                -0.42569797521563046,
+                0.8043677971794013
+              ],
+              [
+                1.0,
+                -1.2283754004281624,
+                1.0,
+                1.0,
+                -0.6255776995144656,
+                0.8104482562753644
+              ],
+              [
+                1.0,
+                -0.24743395178221553,
+                1.0000000000000002,
+                1.0,
+                -0.3816721141309126,
+                0.9385415903320353
+              ],
+              [
+                1.0,
+                -0.8868228720712986,
+                1.0000000000000004,
+                1.0,
+                -0.7400515958927153,
+                0.9419432330943106
+              ]
+            ],
+            [
+              [
+                0.028812069924214416,
+                0.016844635991076336,
+                0.028812069924214416,
+                1.0,
+                -0.07439684842226756,
+                0.8064165250751214
+              ],
+              [
+                1.0,
+                -0.9222255636756245,
+                1.0,
+                1.0,
+                -0.2805755059908672,
+                0.8083892856329743
+              ],
+              [
+                1.0,
+                0.14072351150328694,
+                0.9999999999999999,
+                1.0,
+                -0.0034907814993313975,
+                0.9396888378380452
+              ],
+              [
+                1.0,
+                -0.5237151710181112,
+                1.0,
+                1.0,
+                -0.3752689633700179,
+                0.9407932332417458
+              ]
+            ],
+            [
+              [
+                0.028812069924214437,
+                -0.016844635991076426,
+                0.028812069924214437,
+                1.0,
+                0.0743968484222666,
+                0.8064165250751208
+              ],
+              [
+                1.0,
+                0.9222255636756261,
+                1.0,
+                1.0,
+                0.28057550599086734,
+                0.8083892856329741
+              ],
+              [
+                1.0,
+                -0.14072351150328838,
+                1.0000000000000002,
+                1.0,
+                0.003490781499330133,
+                0.9396888378380455
+              ],
+              [
+                1.0,
+                0.5237151710181117,
+                1.0,
+                1.0,
+                0.3752689633700176,
+                0.940793233241746
+              ]
+            ],
+            [
+              [
+                0.028812069924214426,
+                -0.006586051078118441,
+                0.028812069924214426,
+                1.0,
+                0.4256979752156306,
+                0.8043677971794017
+              ],
+              [
+                1.0,
+                1.2283754004281613,
+                1.0000000000000002,
+                1.0,
+                0.6255776995144654,
+                0.8104482562753649
+              ],
+              [
+                1.0,
+                0.2474339517822164,
+                0.9999999999999999,
+                1.0,
+                0.3816721141309129,
+                0.9385415903320351
+              ],
+              [
+                1.0,
+                0.8868228720712976,
+                1.0,
+                1.0,
+                0.7400515958927147,
+                0.9419432330943109
+              ]
+            ]
+          ],
+          "dtype": "float64",
+          "source_author_default_is_causal_lfilter": true,
+          "adaptation_not_byte_identical_author_preprocessing": true
+        },
+        "pipeline_scope": "Exactly the FBCNet shared9band filterbank; independent6CSP per band, concatenate54, no band/feature selection"
+      }
+    },
+    "classical_comparison_limit": "Classical target-only50 vs neural additionally700 source trials; CSP bank/path changes are not solely a final-head substitution",
+    "decision": {
+      "CE": "raw logit argmax (not softmax float32 argmax)",
+      "Walsh": "original float32 sigmoid then Euclidean Walsh distance",
+      "Walsh_posterior": "historical1e-7 bit clipping; stable class logsumexp with no class-probability clipping; preserve any native/posterior decision disagreement"
+    },
+    "temperature": {
+      "count": 330,
+      "calibration_n": 20,
+      "source": "reserved target first-day20 only after fit50",
+      "bounds": [
+        1.0,
+        100.0
+      ],
+      "single_positive_class_score_temperature": true,
+      "bits_scaled": false,
+      "raw_and_calibrated_retained": true,
+      "Walsh_fixed_T8_descriptive": true,
+      "endpoints_and_T1_explicitly_compared": true,
+      "tie_rule": "closest abs(log T)",
+      "native_decision_invariant": "temperature does not improve native accuracy; preserve CE logit/Walsh Euclidean decisions"
+    },
+    "later_day_gate": {
+      "days": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "required_before_any_later_EEG": [
+        "400 neural fits",
+        "50 classical fits",
+        "330 temperatures",
+        "60 CV validation records",
+        "2530-artifact complete model freeze"
+      ],
+      "all_target_later_EEG_opened_only_after_complete_freeze": true,
+      "source_later_days_opened": false,
+      "no_after_gate_update": [
+        "models",
+        "BatchNorm",
+        "preprocessing",
+        "CSP/LDA",
+        "temperature"
+      ],
+      "test_count": 1320,
+      "later_NPZ_byte_hashes_checked_only_after_gate": true,
+      "later_metadata_and_original_event_labels_preflight_only": "No EEG or prediction values inspected before campaign freeze"
+    },
+    "analysis": {
+      "unit": "15 target people; each person mean over5 starts, fixed10 source pool",
+      "n": 15,
+      "primary": "Day2 C-A native accuracy",
+      "Holm_family_exact5": [
+        "C-A",
+        "D-B",
+        "B-A",
+        "D-C",
+        "(D-C)-(B-A)"
+      ],
+      "test": "paired two-sided t-tests on person differences, Holm across exactly5 comparisons",
+      "confidence_intervals": "pointwise95%, not multiplicity-adjusted",
+      "descriptive": [
+        "source CV",
+        "Days3-5",
+        "stable unclipped class NLL",
+        "ECE15",
+        "sum-over-classes Brier",
+        "CSP comparisons",
+        "fit time",
+        "temperature boundary counts"
+      ],
+      "no_partial_scientific_ranking": true,
+      "preserve_negative_and_nonsignificant_results": true,
+      "no_pooling_with_old_Lee_or_SHU": true,
+      "all_records_and_hashes_before_outcome_analysis": true
+    },
+    "interpretation_limits": [
+      "SHU/Lee were already inspected; exploratory development, not new independent validation",
+      "no general-superiority or forgetting-prevention claim",
+      "no temperature accuracy-gain claim",
+      "uncertainty conditional on fixed10 source people",
+      "20-trial temperature estimation and cross-day shift remain limitations"
+    ],
+    "events_metadata_path": "external://events.zip",
+    "environment": {
+      "python": "3.12.14",
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "torch": "2.5.1+cu124",
+      "cuda": "12.4",
+      "sklearn": "1.7.2",
+      "mne": "1.12.1",
+      "python_executable": "external://python.exe",
+      "GPU": "NVIDIA GeForce RTX 4070 Laptop GPU"
+    },
+    "execution": {
+      "threads": 2,
+      "device": "local CUDA RTX4070 Laptop",
+      "RunPod": false,
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "strict_deterministic_algorithms": true,
+      "single_process_lock": true,
+      "resume": "only exact code/data/protocol/environment and checksum checkpoint containing model/Adam/targets/order/Python-NumPy-Torch-CPU-CUDA RNG; old process confirmed dead first",
+      "hourly_reporting": "operational counts/aliveness/error every hour in Turkish; no partial science"
+    },
+    "code_sha256": {
+      "code/campaign.py": "636cebd69e7681e300b14658f9b7f6212edffe877f762309eefc4d0082162e0e",
+      "code/classical.py": "dedfeb38c39425275bb5fc166f0961dcb8909879b5a56011cf61872c61c79a2d",
+      "code/classifiers_metrics.py": "d1d0300cd7aab0e1b113747e71698e0418edf92af4d20b926875128a7732cd52",
+      "code/filterbank.py": "358eeb4e6b06e233349c0fb42336a5970275fba9e5d9f78119338f935854922a",
+      "code/full_data.py": "9d764dc1befe00ef1c0e3717ac41c6e2900ff3f67198bc413b8a89da9ad4862c",
+      "code/models.py": "10ed8f39ef02f46cc4d09e5b5629adf8f03489a9630382bb36b64daf8aa3a7b3",
+      "code/training.py": "f14d1a7958c28fa7637b06978fe7579c3d7e4d324f35ccb736236384fb020235",
+      "code/walsh_codes.py": "b2e1aead702f91c48a46aed481efd004d19aa8455aa2e4b4bd1d61bd47acf2c4",
+      "analysis/final_analysis.py": "aece974565240e409517d0b2011dc1e47c0026854ccc68c0e29e86495e7020b4",
+      "ops/monitor_campaign-V1.0.py": "6aca7a1047c1c73f9df44cd801dbca3c47f402fd4034f54908b5d119fa15dd28",
+      "ops/prepare_inputs-V1.0.py": "6fbf2105e2acaaa806eb714ae06d3037d51285a9834ae3d554532993662b4833",
+      "ops/freeze_protocol-V1.0.py": "0e437056c86a03b6ace08b4af51f12cae6dc442f6c4bc8f8e48aa9ae9b4fe31b",
+      "ops/launch_campaign-V1.0.ps1": "1ea4bd914c5e9eed8ae9516d4e29d2caa4603456662c5757dceffbbe1b7e88a7"
+    },
+    "data_sha256": {
+      "data/INPUT_BINDINGS-V1.0.json": "f77c7e8342cc143d4e70fb15d1c68243168bff0d4ee0c8f5040aaad0fc082b40",
+      "data/LABELS_AND_INDICES-V1.0.json": "3d8806eac0a1c67b93c8c24cec73e606e07c30f3e4de4577692da0cf7008e5fc"
+    },
+    "qa_sha256": {
+      "qa/ANALYSIS_QA-complete-V1.0.json": "71a1eca581d169f42ce22bde469297345c6940d7ab252596a2337ea3f517b697",
+      "qa/ANALYSIS_QA-final-V1.0.json": "a7270505faf7fd4cbb9e90767089d5c5d7949902394dee9cfd96c0a07472c121",
+      "qa/ANALYSIS_QA-V1.0.json": "f593932e80e1b08f4dd076a5e5e067acec57113caa57bdcb85399e142d81a199",
+      "qa/CAMPAIGN_CONTRACT_QA-V1.0.json": "eca9f6e95003a86b3b04fe49a0348eb7d671667dccc38dbfbe9cec860fbb009b",
+      "qa/CLASSICAL_QA-V1.0.json": "e2cdf659baf840d07b98374cd2fd2b021ebf3b2b2f6c3217aa75a6bc7d2a241d",
+      "qa/CUDA_TRAINING_QA-V1.0.json": "25425fbf1e5d515a2568cc9f0afa69f073dd46dd52857832c2fd18a28233f452",
+      "qa/GATE_QA-V1.0.json": "e73cb292504bb4e60a0bbc27e530d1a09235d9f5a45ede47aad32851fb82bae4",
+      "qa/LABEL_METADATA_PREFLIGHT-V1.0.json": "346242f7928a4dd5e005fa83365b4319b86d588ea7e80b52231eefebcbda6001",
+      "qa/MONITOR_QA-V1.0.json": "8fb1f7363ce9eeb3a862a1d811c90247c7e02725c4fbe7c0cdc622ecce9ab183",
+      "qa/test_analysis-V1.0.py": "ff9e61dd4700ed610143800b4833409dd48ac44df9ffb1e53df65414d77e2be0",
+      "qa/test_campaign_contract-V1.0.py": "c06e7fed92720646891a677d58ab28081db718ed1e99be91a668187b866a62b4",
+      "qa/test_classical-V1.0.py": "e1e4fa956a7f68b201cd38cf1d280ce74b95f30aa715aec370dc78a98ce91572",
+      "qa/test_cuda_training-V1.0.py": "1492696b90bcf26fce0dc6853e3b8f8307e102358a5a34a60a553adff5150c64",
+      "qa/test_gate-V1.0.py": "b686843585fbb569d4db55e77b7089a0f9f75318dce4fce7ca33095e74fd2e7a",
+      "qa/test_monitor-V1.0.py": "ed5148d4890d16b54efefac346c9c0371b1f520f3ad54ced702fc98d9f3d32f0"
+    },
+    "qa_required_reports": {
+      "CUDA_TRAINING_QA-V1.0.json": {
+        "status": "PASS_SYNTHETIC_CUDA_TRAINING",
+        "sha256": "25425fbf1e5d515a2568cc9f0afa69f073dd46dd52857832c2fd18a28233f452"
+      },
+      "CLASSICAL_QA-V1.0.json": {
+        "status": "PASS_SYNTHETIC_CLASSICAL_PIPELINES",
+        "sha256": "e2cdf659baf840d07b98374cd2fd2b021ebf3b2b2f6c3217aa75a6bc7d2a241d"
+      },
+      "ANALYSIS_QA-complete-V1.0.json": {
+        "status": "PASS",
+        "sha256": "71a1eca581d169f42ce22bde469297345c6940d7ab252596a2337ea3f517b697"
+      },
+      "MONITOR_QA-V1.0.json": {
+        "status": "PASS",
+        "sha256": "8fb1f7363ce9eeb3a862a1d811c90247c7e02725c4fbe7c0cdc622ecce9ab183"
+      },
+      "GATE_QA-V1.0.json": {
+        "status": "PASS",
+        "sha256": "e73cb292504bb4e60a0bbc27e530d1a09235d9f5a45ede47aad32851fb82bae4"
+      },
+      "CAMPAIGN_CONTRACT_QA-V1.0.json": {
+        "status": "PASS_SYNTHETIC_CAMPAIGN_CONTRACT",
+        "sha256": "eca9f6e95003a86b3b04fe49a0348eb7d671667dccc38dbfbe9cec860fbb009b"
+      },
+      "LABEL_METADATA_PREFLIGHT-V1.0.json": {
+        "status": "PASS",
+        "sha256": "346242f7928a4dd5e005fa83365b4319b86d588ea7e80b52231eefebcbda6001"
+      }
+    },
+    "source_sha256": {
+      "sources/author/LICENSE": "d49139077118be986cf33d2548d7d852155e539e45520ea79d9b370c7d2eb146",
+      "sources/author/networks.py": "48b0b46f36d70a8ea337fa1e82cb84d5eed593c35bbb860672dcd3569c751d92",
+      "sources/author/README.md": "0c2b102f8dc10cff77efc579587251d031923a41e4687b5b3860b8d5345cb247",
+      "sources/author/transforms.py": "0b719004e94d04f6a38e01820b468d65e9ba4c95f8696a1680c6fce638609a48",
+      "sources/AUTHOR_SOURCE_BINDINGS-V1.0.json": "512d208a743be8a1be80adf3a9951a6b34d9340cfa15f8631845c66f0b0e504f",
+      "sources/READONLY_INPUT_HASHES-V1.0.json": "66e0a58598bf1fe1d0a3cf6675bd5f99aa5120d0de872cf4cd675a895a24001a"
+    },
+    "old_scientific_protection": {
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_021_split_meta.json": "ec3789653cc4bf8cdc03a91e2bab608156a3954d5f18e7e89465cb38afceecec",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_006_split_meta.json": "9dc750b275f6b0bcbd1bc5e41d3d52d392d4bd92b45da598d81e9b6910ca4ef5",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_010_split_meta.json": "ff853c209025c4e57664ba2dec4ac797cc034f149c618c55a9c8c79fa0039486",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_018_split_meta.json": "d7f256ad75b938412fce6a2be077abb4c08ab02430b7bcbfaaabc97df46d1151",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_019_split_meta.json": "7315a4c9af9ed1eb20c7e9a0e7cf323d637ebcb86ed3d2c997bf5c719ad2a02d",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_025_split_meta.json": "2b5da1a122b439eb2533f4693c76befdf312c05f58b8f39afa9a0552574335d0",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_008_split_meta.json": "261c298d54dec83e5a84b61e657651cdfb370a2f0a2fa5343bc28fc56fdbf753",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_007_split_meta.json": "5ab27b0c421db502fa091f0ae2618e3dedfe620ef3c20af597e35a706127db83",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_015_split_meta.json": "d92ce9b7bcfaeffac19962647488b4a54628cc2db81a94673207aa4fde320cdd",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_012_split_meta.json": "5d214ab2833de1caa2b03f92c4f0b9d7ab3f3b0f9e072f6d3006fbf6f4c941cc",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_022_split_meta.json": "0f7c61555e738f3b842a89a877e08a4e795558fb365c58dc8ed07fbc0004aebf",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_014_split_meta.json": "085a4913339268fde15e922cfc8ac4dd7516f8c643da1b1bbc5b527defac73e9",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_017_split_meta.json": "a4a0aca317451d3588ee80187bc935170d3b493bbf85086e3e0c6f5b42f4cd74",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_004_split_meta.json": "b342a431f50ce5a77feb5cc464de0ef1a736273ec0c77ebbe6f0ccd4748a317d",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_001_split_meta.json": "77430d90956c9f31dadc54c0bf7a80e41ade5b163d71e24d6644285e4d532292",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_016_split_meta.json": "66c9ee1f1465c3bf343f8327937ab22b165c72232ba71c7b11fdfe8c4a684447",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_002_split_meta.json": "01f30ddaa2bf744e821f2616560e35175cd2503855a53a0687b413f7ec00ce07",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_005_split_meta.json": "8f1f81d5006f7486be96ed7078abfaf1856f13ecbb5014e16410e2a2573b1cd7",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_011_split_meta.json": "fe9e15b226c2d837fe220447e36a209dab14e3fbedad24a20f8ae17b5fd1384e",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_020_split_meta.json": "32d95dc13e2c703f61fbfe5b6ef834bf83fb816b1db044c87061adde0c6700af",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_009_split_meta.json": "5e48d076e7cbbfb7bd8fa71a3ff9b09e13ac85cb5972434b998bb9167bcf8234",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_024_split_meta.json": "1bdcde95a323e377a9d70f2e91c6e1e46cc1a44e67e1d9a1c4c4b584d827eb2d",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_003_split_meta.json": "7daf307ffc97054129a297488e5b3cc97e04363dc94744bc04bb79ae1f358772",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_023_split_meta.json": "307edee298ac6ffadb415f8bb9b8fbf09ae8d9837be7caf02261eac853f64acb",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/day1/subject_013_split_meta.json": "e3856141884456abe084dcd537229aebaece94ac0f5f6461408b103fc5f0532a",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_022_day2_test_meta.json": "bb5ebda92a92f847c551ac32fdb3613ad5c9cf68e9c646931a6ed7fefc0dd9b0",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_022_day3_test_meta.json": "b3c889e399d19fedc1efbccb172213b8ef52e5c0cc47d9e43cdfc317f1d1ed6e",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_022_day4_test_meta.json": "f0b54979b2cd02a407de669e153f926b300deccc1f9c476bc963de2e3c9e36fe",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_022_day5_test_meta.json": "35ba983b6f18d995524bb0678d419996566a5d71cdc80e21ed0083e9abf0ee29",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_014_day2_test_meta.json": "3a43d5465e7d450f0bdbc543ab182a97f0b5df570818f4336de57816cbf2e0de",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_014_day3_test_meta.json": "22ba66b7653242f27650a20393c79504e62a4319473e4554cbd29709fcc6316e",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_014_day4_test_meta.json": "e02da7a211d86ad5497041e652f48cce41053bb47ca6a42b78ba99e757e841e2",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_014_day5_test_meta.json": "b3ef06231a355f9f9d24326318ddd838eae02f83c9c88e8df79adef722fb1113",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_017_day2_test_meta.json": "5447a8bcf128b9d6237828e841dadca7efcc8e29657400ec598d542ff0d2a0e6",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_017_day3_test_meta.json": "16104e350382ab2375058efd728803acb8aa4a9c0f64c7f938b445ee9f525030",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_017_day4_test_meta.json": "df6838b7369168deb3a911add3c6bdad3c74dfe0daa4357744e5c69a6e5deec3",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_017_day5_test_meta.json": "0818b70b6b952f5a47fc795b5d8b0c494221fa42e8461f4a44990430b12163b5",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_004_day2_test_meta.json": "497a6040c7e5ea3e287f2735538ed70d507b19237c13ea38961fb3c7fa224c8e",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_004_day3_test_meta.json": "54d791071eaeadb710cc830274d368cbee4bbca92c89e7c41546d5444cdfa87e",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_004_day4_test_meta.json": "f2fb7bff2635cf167155a51adab17ad2ce26f3153a1cf695c833223d74dc354c",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_004_day5_test_meta.json": "76c2ac0bdca1191ce49ff4eb1d9928ceb32960474fb409bf6471af460aa0777e",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_001_day2_test_meta.json": "29e58b97e358093e99d131137ebd18c69bda450c2cc45c8034e71a943ee18aea",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_001_day3_test_meta.json": "09e4d3109f179fd3a5d8d482c2b660f6ce7fb8933bc3a97d4380afb7ff1fd3bb",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_001_day4_test_meta.json": "422ae0c9022821d364cc8ce30d037d2d39f59975fae2327e6c71e9543f6204f0",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_001_day5_test_meta.json": "e0eca419ca9552b4cc0caf4872a81c9cf23a5502cf144e8a94c26a18109a3b44",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_016_day2_test_meta.json": "aa5ca9cdd557c6b51942e7704f1c303de6355b976c29a378628969880021e223",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_016_day3_test_meta.json": "463353cc1bdb80c41187e32be128276c9e61318ed2d37edcf78516efd6b6b6f9",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_016_day4_test_meta.json": "5f122158e25e39990de7cebcbd735a41ac3701a74e14738440932f58f46b47b4",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_016_day5_test_meta.json": "3ff601cbbb495224494764fd863f86248d913067a152328d23b920731b3b8af7",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_002_day2_test_meta.json": "1d1f1d8f33a649670bf2383a8ad0fe3ade063d33b90feaf08c013fbe77d65e2c",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_002_day3_test_meta.json": "c799e284bebf03d476e00843e6b912978a933dfef0b10b96cba9a659af753564",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_002_day4_test_meta.json": "ea3e54ec0229ef18b5822ed7a15aa6e936b5270e9c2996bc0da531c748de2472",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_002_day5_test_meta.json": "46df0728b083ac29d74d68adf3b6771802c25fc96f969643cf84f0b27e915101",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_005_day2_test_meta.json": "1344334201e8a9d5277e996dd7fc281a95e870bc73eba38a68075b637737eb68",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_005_day3_test_meta.json": "a89f78bb9753b1e6619e76982a493f596c6ec1c329e84ac89cfd8e6b5b11a26f",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_005_day4_test_meta.json": "ec72e9a04af4fd5dce9bbe06d44167870661c0628427941c128ca5b2edef516f",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_005_day5_test_meta.json": "aa215cc34176afc8e6d091adf362128ee61d6842bfa341a0d84e8315b1337412",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_011_day2_test_meta.json": "9c7003bcc8e186c337c5077c8b559d42a4fc14adad708e9c9ce1b27ac729c3db",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_011_day3_test_meta.json": "6410447026c59660d37ae127a128dcf69dc1467d540b95eac26fdfa0e7bb7abc",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_011_day4_test_meta.json": "149960d064f00387bc387ac3ec514236a3ae641225d4329d679f50238556a7e6",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_011_day5_test_meta.json": "fd833db1934008c2edfbaba8cc9bf028724e1509fd2e3e1e55b97e810bb10acb",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_020_day2_test_meta.json": "9ff9d94f8289a0303ea9419872bf986f389e678c62d522c06a9fb436c99497f7",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_020_day3_test_meta.json": "7927973505b0796838a633348a6301914b9d21682622becbe0468a510a1c65c6",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_020_day4_test_meta.json": "fb9ee92468ed53045f9d8c94ecbba46eb897a948e650e720f26e786e3a1f4936",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_020_day5_test_meta.json": "2c4fb77b362853ec7db4e1cf1c83c8da89e163c8e4d152c38456682ae622e94a",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_009_day2_test_meta.json": "d7502e9638248c9af9a8dfcbf47ca024808753b01d0eb86251812e09340beaa0",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_009_day3_test_meta.json": "b362f5f08417270474ba1597cd801fb565d866b7103ed4afdb0f9fe1077b7b51",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_009_day4_test_meta.json": "7fceefada7f4dcb7a6f533a631e854198d6e603d1afb11aa5aaa263246644b50",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_009_day5_test_meta.json": "3c97e2fa2e4fef252d669473831c78332b02f1b92d31f0db804b12deb23f991c",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_024_day2_test_meta.json": "e4f0fd670fe53efb1003814a976a3b96871f33bc52b363340a891cc6929e9f18",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_024_day3_test_meta.json": "cc2d1c86e4c81e507b35652d48a92c52e2b6d7ee0c29128251cd9f784e929a18",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_024_day4_test_meta.json": "95662964268d39085bbb3aad5f078ee21e655732318ca3e3c660200277138ac7",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_024_day5_test_meta.json": "84f210892e939cd419955269929635cdc212888f0390d433646a82ba252b8175",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_003_day2_test_meta.json": "1b4026361e67ab523c8087cd542a8f39d47dcda6e53b50fe2bf42d1d3db04f26",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_003_day3_test_meta.json": "c1c1eec2c03295268b7aab204582b3a7bb9d628ccf91505df361d2442d50d1b0",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_003_day4_test_meta.json": "136b789e86b939b9cfc2a643f7c9f01f5e7d2f13b6d252104ce39fc8f485c5e9",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_003_day5_test_meta.json": "50d33a3a3c828e20f65cb24e63aa57fbbb5b4307dab0dffec2282e353b29cbf5",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_023_day2_test_meta.json": "b3fc684f86a0907406b6aca5ca3723ab04a287de6a607b346dbf45039f0fe0d6",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_023_day3_test_meta.json": "8e03c506a20790c2ea9fdad14b17ebfa16c489a18eff5752bf39f8fb6a552006",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_023_day4_test_meta.json": "e255d5cb1830e20f20789e77b498e110c2e085721bb50bae5f35e79a141c1457",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_023_day5_test_meta.json": "479b7d4f9f702da42952738f06f0bdc2799e12f9d93dc232236fec9114d42ade",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_013_day2_test_meta.json": "f0f56e6e1419b3f8d47671d16c4a1f06a51d07bd99e0aaeec380a1a93b255183",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_013_day3_test_meta.json": "2853c30c7ca804e5a64f2655bc57c9672ed6fea209014934c051f8b50899dea2",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_013_day4_test_meta.json": "4101a49e502d825a29bc0ad6b9b8c08ed1faa2a1d060c3fbbc503dc70f5ec06e",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/prepared/subject_013_day5_test_meta.json": "7904e48035b167b74ffb0f9af44a1a7cb3c874a09619c1b5d4ec7a9790685961",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/data/DAY1_SPLIT_MANIFEST-V1.0.json": "b91bb7aeede07f96f6934da6823a3ddc16723e075af723476047f94215c42524",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/TAM_DENEY_PROTOKOLU-V1.0.json": "a5db0c64c5fc0a2c631a775cb2e54a45d2c11e67b1d893794a439ca04484dd08",
+      "SHU_ONISLEME_VE_LDA_KARSILASTIRMA-V1.0/final_analysis/PREPROCESS_LDA_RESULTS-V1.0.json": "70cc3940271747e4a1ea29389f3fff31bcb20f0ec5d2ae7a35b1ab80d7e32db6",
+      "SHU_GELISMIS_MODEL_DENEY_PLANI-V1.0/DENEY_ONERISI-V1.0.txt": "a3af4d7a8cbd4a45b35ad38bee4b6a44a4155bb6e2f7af2d8733598b020dff7a",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/sources/author/networks.py": "48b0b46f36d70a8ea337fa1e82cb84d5eed593c35bbb860672dcd3569c751d92",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/sources/author/transforms.py": "0b719004e94d04f6a38e01820b468d65e9ba4c95f8696a1680c6fce638609a48",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/sources/author/LICENSE": "d49139077118be986cf33d2548d7d852155e539e45520ea79d9b370c7d2eb146",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/sources/author/README.md": "0c2b102f8dc10cff77efc579587251d031923a41e4687b5b3860b8d5345cb247",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/sources/AUTHOR_SOURCE_BINDINGS-V1.0.json": "512d208a743be8a1be80adf3a9951a6b34d9340cfa15f8631845c66f0b0e504f",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/PILOT_PROTOKOLU-V1.0.json": "25d7968a38312e0cafc12c1dddc6e3e8984a05a22176d202d5741e5dccba8eea",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/PILOT_SONUC_VE_PROTOKOL_OZETI-V1.0.txt": "99a54ad6f75a5f2f31c9fcb6de1b46314d43e4fad1afb8324f5ef07192aea097",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/SHA256_MANIFEST-V1.0.json": "29534db77db8bfcd7e8616198e434ce581d93980e8f4ea696997829f85382b4c",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/pilot/SOURCE21_ENGINEERING-V1.0/PILOT_COMPLETION-V1.0.json": "0cecaaf683f259e2b8af85fd9e226f4fae464770d02ab23f6330713b1681683e",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/code/models.py": "10ed8f39ef02f46cc4d09e5b5629adf8f03489a9630382bb36b64daf8aa3a7b3",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/code/training.py": "f14d1a7958c28fa7637b06978fe7579c3d7e4d324f35ccb736236384fb020235",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/code/filterbank.py": "358eeb4e6b06e233349c0fb42336a5970275fba9e5d9f78119338f935854922a",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/code/classifiers_metrics.py": "d1d0300cd7aab0e1b113747e71698e0418edf92af4d20b926875128a7732cd52",
+      "SHU_FBCNET_KARSILASTIRMA-V1.0/code/walsh_codes.py": "b2e1aead702f91c48a46aed481efd004d19aa8455aa2e4b4bd1d61bd47acf2c4",
+      "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/source_metadata/sources/events.zip": "03460474a8696775199d32c22324d5d7f0bd6b7894fe072e2a8af63bf6c093b6"
+    },
+    "readonly_day1_inputs": {
+      "external://68029f8d3e3d/subject_021_split.npz": "06be4a6a142e2692df9c2738196212c2fa291eeb9bf6f36199bd2b5ea5d1f574",
+      "external://30aae09a7139/subject_021_source_final70.npz": "2b2252069a7423df9c1407f84c3940c814837c2fbf383bbcc01e38500de3a8e2",
+      "external://705c16ae340f/subject_006_split.npz": "63b5ca8fa37b0cfc5f57969c0203877994356b20e6a970f5a37edebfa1b7c8b2",
+      "external://fd8b38076164/subject_006_source_final70.npz": "38cab7a8e3c06e5117be30785d9c415db0282a6450a0521e52c01e10a1e41b16",
+      "external://9ecb0fc66ae1/subject_010_split.npz": "b35096314bb07129929971a1b35dc47cfce8cb6049e7359ba80436bf1d9ea2de",
+      "external://6a38eab1550a/subject_010_source_final70.npz": "60207d5d85f67fe67ddfdbc92db7f02a45abd135aaa7958e24d8b27ee4df299d",
+      "external://31ebaf24e666/subject_018_split.npz": "c54f8c962c9e3ba24132951f586b071ba7f9a57c044b668f95ca0f93af9b5af6",
+      "external://e6bc39347819/subject_018_source_final70.npz": "880223e73efd042b8b1bcce28c7b5c978bf01e82fe69c78936abd1c5a6dcd27d",
+      "external://e0eb3e6cb8ba/subject_019_split.npz": "226c989cafaf9c10f481a5780d886dd0e89a5ee58faf2589ef55b4184f9cbbb0",
+      "external://a2bd9b7b2362/subject_019_source_final70.npz": "5737a6bce4c3dc848846b51715e94e4d621a145f7554e2612ac763f775fc7f7c",
+      "external://c746b783e511/subject_025_split.npz": "ebe3ffdb1235585a32b1522152ea36f1c26fa4f69c7521dab0bab3dbb4022bac",
+      "external://74807635ba1d/subject_025_source_final70.npz": "ddbd79e063df9147ab75989da1cb9d881d0876e0feaead04866c361cebd4d549",
+      "external://d67d17ee77d8/subject_008_split.npz": "e516312e5cb1a9cd8120fd425c49a3330e2fa172f4f2c9db129072b039f5ed9a",
+      "external://26b811af5614/subject_008_source_final70.npz": "afe2d35b740a21d87bc4f9cdb0aebb102191a365061a0de8273d7c6095953bcb",
+      "external://b66d46019c5b/subject_007_split.npz": "e7acadf26344f22ebdccac7a71cbf842450019f2c9398614eaed4e2e1f1ff0e0",
+      "external://2904ca9078c9/subject_007_source_final70.npz": "7604641fb418d5a04e3e51ce6f14ade93c2524da2d614d08cc2f7954955c782d",
+      "external://0dcfa1e88913/subject_015_split.npz": "9a14372db6903d462eb31c5549efc566be013f87129172d01028fbe4fde502ce",
+      "external://4166de512f54/subject_015_source_final70.npz": "bd62034f975352420e3a2eeadc206e0641a6a9b87641e0e2f2bf84220bfa2dd8",
+      "external://683289ffb557/subject_012_split.npz": "71e6a8fb654708daa55d55f0d36f6b06a417e549f7b2759e00ec71db57724dfa",
+      "external://21ac1360302e/subject_012_source_final70.npz": "f6aebe3d9a22575ae652f4334b9c5c95f4075df57fd1392e980a61163856ee9e",
+      "external://01d3c9373c68/subject_022_split.npz": "03d2c12e0d3e2da5007fcb0a726928017b867187f8fad236daf4a4b083bc9b8b",
+      "external://aa4eed71e461/subject_014_split.npz": "8f175207e0fb3cae52d235212e674d6d104610a47f9e0a7c8f88a769d5fb8440",
+      "external://3611d9f8fa23/subject_017_split.npz": "fd059a76bfa7f8c32b43b905dadd952c1f6434b3c294cc465682bf2e31e22970",
+      "external://b2473abb9454/subject_004_split.npz": "1a4268daf05490c1849862cc2f6459d40c71d72a92b5ad63833bc79c73d7d61f",
+      "external://4ce99afe3384/subject_001_split.npz": "9549effbf76e6b4eefe2f1b0c08fc1d46348078c9c992f6256194ecb04224421",
+      "external://f9e97a5e5cab/subject_016_split.npz": "21038372d3782fdf74b6067736887273850e6c6a291606c0dad7ece54f540393",
+      "external://ea20e60f07b0/subject_002_split.npz": "fff69e673161c4593ac880a74a84c6a0e54b817cc8b67809c279ec422e28198a",
+      "external://34f307159235/subject_005_split.npz": "e874aca6fd8d146bd8e51848822beff82e94ef301354fb874dd9ee5017ed16f5",
+      "external://794e178591a3/subject_011_split.npz": "d5f55adfc02f7c17dd75fcea5d4738bbc8fbb654777db26c854c3993b923e911",
+      "external://8147f832d7ca/subject_020_split.npz": "88a8489891292e35c8d4bc0cc986174e110d4fed06898d11e9e4a79b80f7b925",
+      "external://fd95c672476b/subject_009_split.npz": "c5069ba486d89635bbafac96fcb9712937d277ebac69b32dbb34244d86a15760",
+      "external://051a95608ed4/subject_024_split.npz": "f40f3f5644bdb55c97757fa037136e05a83783b50f3a2f372fb6caa8689baa94",
+      "external://5a1bc0971884/subject_003_split.npz": "6bf0c7d9e91ffb1ee70f9c8b51fae3defb87905d45a555146051c60659963e0f",
+      "external://2995bf8a4c22/subject_023_split.npz": "dcb22d828c4685bd7b6d47c5f922757eb2a810aae814f6b5353d9e4e348c469f",
+      "external://4f60b9e760c7/subject_013_split.npz": "d380e4d4318c291231dc48750a3bf0f2dd14a550d0dd6555a2812817aeb1491e"
+    },
+    "protected_files": {
+      "IEEE_ACCESS_HAZIRLIK-V1.2/Manuscript_IEEE_Access-V1.2.pdf": "72dd50741d12b259381906f78656b89b86d61881ed63acac5eef8dd491e85206",
+      "IEEE_ACCESS_YUKLEME_PAKETI-V1.0/Manuscript_IEEE_Access-V1.2.pdf": "72dd50741d12b259381906f78656b89b86d61881ed63acac5eef8dd491e85206",
+      "IEEE_ACCESS_HAZIRLIK-V1.2/IEEE_Access_Source-V1.2.zip": "98d988306a7c6dd2f83f05b501bf8f6d49dd8a001a7c7eb6a6bc78a1425e00a9",
+      "IEEE_ACCESS_YUKLEME_PAKETI-V1.0/IEEE_Access_Source-V1.2.zip": "98d988306a7c6dd2f83f05b501bf8f6d49dd8a001a7c7eb6a6bc78a1425e00a9",
+      "IEEE_ACCESS_HAZIRLIK-V1.2/Cover_Letter_IEEE_Access-V1.2.txt": "1c5f2519eb760f3940b131344d3d66301797d996c904924f9ab20f18381a8a45",
+      "IEEE_ACCESS_YUKLEME_PAKETI-V1.0/Cover_Letter_IEEE_Access-V1.2.txt": "1c5f2519eb760f3940b131344d3d66301797d996c904924f9ab20f18381a8a45",
+      "IEEE_ACCESS_HAZIRLIK-V1.2/supplementary/Supplementary_Information-V1.2.pdf": "a40eac6378b7688fb165c6e9a3cac90550240a9e436997138c645ff75d088c4b",
+      "IEEE_ACCESS_YUKLEME_PAKETI-V1.0/Supplementary_Information-V1.2.pdf": "a40eac6378b7688fb165c6e9a3cac90550240a9e436997138c645ff75d088c4b",
+      "IEEE_ACCESS_HAZIRLIK-V1.2/supplementary/Supplementary_Data-V1.2.zip": "6724b9a7cac8d6eae5e5cc1c612c331da9bfc19af125ecd21a0c3c67e408b226",
+      "IEEE_ACCESS_YUKLEME_PAKETI-V1.0/Supplementary_Data-V1.2.zip": "6724b9a7cac8d6eae5e5cc1c612c331da9bfc19af125ecd21a0c3c67e408b226",
+      "IEEE_ACCESS_HAZIRLIK-V1.2/ABSTRACT_AND_KEYWORDS-V1.2.txt": "d7479003b1d205f445579d69f1f75f5a1e3aa74dc6d06fe5b00ec1946fac4733",
+      "IEEE_ACCESS_YUKLEME_PAKETI-V1.0/ABSTRACT_AND_KEYWORDS-V1.2.txt": "d7479003b1d205f445579d69f1f75f5a1e3aa74dc6d06fe5b00ec1946fac4733"
+    },
+    "excluded_actions": [
+      "IEEE manuscript/supplement changes",
+      "submission",
+      "email",
+      "payment",
+      "GitHub/Zenodo publication",
+      "new data download",
+      "additional model campaigns"
+    ]
+  }
+}

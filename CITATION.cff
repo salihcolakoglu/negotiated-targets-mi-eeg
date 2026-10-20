@@ -1,10 +1,9 @@
 cff-version: 1.2.0
-message: "Please cite this software and retained results. Cite the accompanying submitted manuscript separately when discussing the study. See README.md and LICENSING.md."
+message: "Please cite this software and retained results. Cite the accompanying manuscript separately when discussing the study. See README.md and LICENSING.md."
 type: software
 title: "Walsh-coded and negotiated targets for motor imagery EEG decoding: code and retained results"
-version: 2.1.0
-doi: "10.5281/zenodo.23290274"
-date-released: 2026-10-11
+version: 2.2.0
+date-released: 2026-10-20
 authors:
   - family-names: "Çolakoğlu"
     given-names: "Salih"
@@ -21,7 +20,8 @@ license:
   - MIT
   - CC-BY-4.0
   - CC-BY-ND-4.0
-abstract: "Software and retained numerical results for two controlled motor imagery EEG experiments using CSP–CNN and EEGNet on three public datasets. License scope is defined by LICENSING.md; upstream dataset content retains its original terms."
+  - CC0-1.0
+abstract: "Software and retained results for separate CSP–CNN, EEGNet, Lee2019 confidence and SHU architecture/output evaluations. Repeated fits are averaged within people and different study designs are not pooled. The completed 270-fit W4 mechanism control is accompanied by an independent audit and paired retained-result verification as a separate exploratory analysis. LICENSING.md defines MIT software, author-owned CC BY 4.0 materials and unchanged upstream data terms."
 keywords:
   - Motor imagery
   - EEG decoding

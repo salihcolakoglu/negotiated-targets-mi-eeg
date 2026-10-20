@@ -1,0 +1,4 @@
+# Retained-result verification only; no Torch, EEG access or model inference.
+# verify_retained.py uses NumPy; verify_w4.py also uses scipy.stats.
+numpy==2.2.6
+scipy==1.15.3

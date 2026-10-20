@@ -1,0 +1,22 @@
+{
+  "schema": "lee2019-separated-days-v1",
+  "dataset": "Lee2019_MI",
+  "subject_ids": {"minimum": 1, "maximum": 54, "excluded": []},
+  "one_day_per_invocation": true,
+  "train_file_pattern": "subject_{subject:02d}_train.npz",
+  "test_file_pattern": "subject_{subject:02d}_test.npz",
+  "metadata_pattern": "subject_{subject:02d}_meta.json",
+  "train_npz_keys": {"X_train": {"dtype": "float32", "shape": [100, 62, 512], "units": "uV"}, "y_train": {"dtype": "int64", "shape": [100], "class_counts": {"0": 50, "1": 50}}},
+  "test_npz_keys": {"X_test": {"dtype": "float32", "shape": [100, 62, 512], "units": "uV"}, "y_test": {"dtype": "int64", "shape": [100], "class_counts": {"0": 50, "1": 50}}},
+  "label_mapping": {"left_hand": 0, "right_hand": 1},
+  "source_event_mapping": {"left": 2, "right": 1},
+  "days": {"train": {"source_day": 1, "source_variable": "EEG_MI_train"}, "test": {"source_day": 2, "source_variable": "EEG_MI_train"}},
+  "day2_source_variable_is_not_EEG_MI_test": true,
+  "source_EEG_MI_test_excluded": "This is the source dataset's online feedback recording, not the held-out day used in this study.",
+  "mne_processing": {"source_scale_to_V": 0.000001, "continuous_filter": {"method": "iir", "l_freq": 4.0, "h_freq": 38.0, "phase": "zero", "order": 4, "ftype": "butter"}, "epoch": {"tmin": 0.0, "tmax": 4.0, "source_samples": 4001, "baseline": null, "proj": false, "source_fs": 1000.0}, "resample_hz": 128.0, "output_scale_to_uV": 1000000.0, "normalization": "none"},
+  "time_axis_note": "4001 original samples including both endpoints are resampled by MNE to 512 samples at 128 Hz. Actual shape and final sample time are recorded per file; synthetic MNE check verifies the expectation before real preparation.",
+  "fitted_statistics": "None at preparation. Any scaling parameters are fitted using day 1 only in the training runner.",
+  "file_safety": {"numeric_arrays_only": true, "allow_pickle": false, "compression": "np.savez_compressed", "source_MD5_verified_before_loading": true},
+  "metadata_required": ["schema", "dataset", "subject", "data_units", "sampling_hz", "sfreq", "channel_names", "label_mapping", "normalization", "days", "held_out_day2_prepared"],
+  "per_day_provenance": ["source_session", "source_run", "source_class_mapping", "source_event_codes_to_labels", "class_counts", "shape", "event_sample_indices_source", "source.md5", "source.sha256", "source.published_md5", "source.published_md5_verified", "prepared_npz.sha256", "processing", "versions", "preparation_script_sha256", "timing_seconds", "prepared_at_utc"]
+}

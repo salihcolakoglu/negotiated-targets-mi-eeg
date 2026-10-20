@@ -1,0 +1,104 @@
+{
+  "source_protocol_sha256": "1702e81efcc5dcadb04546acdcac6be90645aaac4b56fe238e57f939d73f49d4",
+  "protocol": {
+    "schema": "lee2019-w4-anchor-gate-ablation-v1",
+    "study_id": "LEE2019_ANKRAJ_KAPI_AYRISTIRMA-V1.0",
+    "status": "FROZEN_BEFORE_ANCHOR_GATE_ABLATION",
+    "counts": {
+      "fits": 270,
+      "preprocessors": 54,
+      "tests": 270
+    },
+    "analysis": {
+      "contrasts": [
+        "W2-W4",
+        "W4-W1"
+      ],
+      "unit": "person_mean_of_five_seeds",
+      "n_people": 54,
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "new_Holm_family_size": 2,
+      "pointwise_CI_is_not_multiplicity_adjusted": true,
+      "primary": "W2-W4 accuracy percentage points isolates correctness-gated versus ungated anchoring",
+      "secondary": "W4-W1 accuracy percentage points contrasts hard-label anchoring with cumulative target memory",
+      "test": "Two-sided paired t tests of54 person-level five-seed mean differences,df53; exactly one new2-test Holm family.",
+      "intervals": "Pointwise95%t confidence intervals, not Holm-adjusted intervals.",
+      "other_metrics": "Descriptive paired NLL,ECE15,Brier,confidence and training-target displacement; no additional significance families.",
+      "probability_mapping": "Exact original binary Walsh rows, bit clip1e-7, max-subtracted class log scores followed by normalized exponentials, and final class probability floor1e-12 for old-compatible NLL; new Brier uses full normalized posterior.",
+      "limitation": "Lee test results were previously inspected in other studies. This is a prespecified exploratory mechanism ablation, not unused-data validation or a new confirmatory family replacing the old five.",
+      "n": "54 people, not270 new fits or810 combined records. Preserve every person, seed and negative/inconclusive result."
+    },
+    "scientific_scope": {
+      "new_condition": "W4",
+      "target_rule": "neg_anchor_all",
+      "target_equation": "((1-alpha)*Y + alpha*P).astype(float32)",
+      "alpha": "0.03 * zero_based_phase",
+      "phases": 10,
+      "epochs_per_phase": 30,
+      "terminal_epochs": 300,
+      "batch_size": 16,
+      "training_trials": 100,
+      "test_trials": 100,
+      "channels": 62,
+      "samples": 512,
+      "Walsh_bits": 16,
+      "actual_Adam_updates_per_fit": 2100,
+      "intermediate_test_evaluations": 0,
+      "historical_comparators": [
+        "W1",
+        "W2"
+      ],
+      "historical_comparator_fits": 540,
+      "target_correctness_gate_decoder": "unchanged original float32 Euclidean decision",
+      "official_metric_decoder": "unchanged original float64 Euclidean decision on saved float32 P",
+      "new_fits_before_all270_freeze": 270,
+      "Day2_arrays_before_model_freeze_forbidden": true,
+      "new_independent_validation": false,
+      "existing_IEEE_files_changed": false
+    },
+    "research_question": "Separate anchoring from correctness gating within the same Lee2019 EEGNet, budget, data and output representation.",
+    "data_and_information": {
+      "train": "Same retained 100 first-day offline trials per subject,50 left/50 right,62 EEG channels,512 samples,128Hz.",
+      "test": "Same separate 100 second-day offline trials. Read only after all270 new fits freeze.",
+      "normalization": "Exact original training100 float64 channel mean/populationSD+1e-6 over trials and time; transformed input float32.",
+      "no_new_adaptation": "No test statistics, model/seed selection, early stopping, temperature, alignment, transfer or teacher.",
+      "historical": "Existing W1/W2 540 fit/prediction pairs retained unchanged; not retrained and not extra participants."
+    },
+    "training": {
+      "model": "Exact original EEGNet constructor/draw order, temporal8/depthwise16/separable16,256 features,16 sigmoid Walsh bits; dropout0.5.",
+      "optimizer": "Adam0.001, fresh optimizer per model, batch16,2100 actual updates in300 epochs.",
+      "seed": "Original core.set_seed(seed), seed1..5; original torch.Generator(seed) for sample order.",
+      "phases": "10 consecutive phases of30 epochs. Phase p trains against current targets then predicts training100 and computes alpha=.03*p.",
+      "last_used": "Phase0 update is zero; final trained phase9 uses targets computed after phase8 at alpha=.24. Phase9's alpha=.27 targets are saved but never trained against.",
+      "W4": "((1-alpha)*hard_codeword + alpha*current_training_prediction).astype(float32) for ALL samples; previous negotiated targets and correctness are not used.",
+      "W1": "Historical cumulative recurrence retained exactly.",
+      "W2": "Historical anchored correctness-gated recurrence retained exactly.",
+      "precision": "Training gate float32 Euclidean in old W2; original walsh_metrics converts saved float32 prediction tofloat64 before native nearest-codeword decisions.",
+      "timing": "New checkpoint/progress overhead differs; do not claim a controlled speed comparison with historical fits.",
+      "resume": "Same version/identity/input/params plus full model,BN,Adam,negotiated/used targets,global Python/NumPy/Torch/CUDA RNG and generator state at phase boundary only."
+    },
+    "gates": {
+      "before_data": "Exact protocol/code/QA/runtime plus SOURCE_BINDINGS and1261 read-only byte bindings.",
+      "before_day2": "270 model/checkpoint/training-output receipts +54 preprocessors form exact864 artifact union.",
+      "before_statistics": "270test receipts+270prediction NPZ form exact540 union; check all labels/order/source identities and existing W1/W2 links before aggregate.",
+      "no_partial_comparisons": true
+    }
+  },
+  "source_code_sha256": {
+    "code/lee_core.py": "bf1639f7afb931a2d7fa5c0ff7de10daaecd6b85a8ab539efd4809e0ca09ed48",
+    "code/lee_data.py": "49b4326d390f9f5d4bf363e829a41f8b8902bf668033fab3439ac61ca4184740",
+    "code/training.py": "796602ecdf68673f9fa70d64f0c8e78ea44cf26158fc007b31d356a8799669af",
+    "code/campaign.py": "d53a5e57127b18e742b3b53bb8a33b7ef0d432d92fdca8f4affa4547b343aeb8",
+    "ops/run_campaign-V1.0.py": "b237ae3760aba7e97d0a7bc969d4c4a18fcd549b7555b4f1ce0eb2869c5bd15e",
+    "ops/monitor_campaign-V1.0.py": "7b3990a82142da65a468c2bce334dddb0d9ff70f418492c17003034dd60c5607",
+    "analysis/final_analysis.py": "925079efadbf9aac4ee0f5fc4a793dce192ec99c80f1b3ac3cd37ba7ba1070f5"
+  },
+  "results_included": false,
+  "scope": "Root-frozen W4 definition; no pending fit/test output is represented as complete."
+}

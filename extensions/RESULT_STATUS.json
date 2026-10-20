@@ -1,0 +1,13 @@
+{
+  "status": "COMPLETED_W4_RESULT_ADDENDUM_VERIFIED_NOT_PUBLISHED",
+  "source_protocol_sha256": "1702e81efcc5dcadb04546acdcac6be90645aaac4b56fe238e57f939d73f49d4",
+  "W4_results_manifest": "extensions/W4_RESULTS_MANIFEST.json",
+  "W4_results_manifest_sha256": "8384ae7f9254781b5454fbbfc6834e82f773630dc99dc34463af703a5285024b",
+  "W4_results_archive_sha256": "cd1e6b4c73f0e9ffef1613390a763d222b824cb0798d15cb8347aee1d51e03ae",
+  "new_test_files": 270,
+  "historical_comparators_reused": 540,
+  "earlier_pending_snapshots_preserved": true,
+  "original_five_test_family_modified": false,
+  "no_fresh_public_full_training_rerun_claimed": true,
+  "publication_performed": false
+}

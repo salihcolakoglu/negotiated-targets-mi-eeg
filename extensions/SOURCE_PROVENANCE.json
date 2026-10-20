@@ -1,0 +1,362 @@
+{
+  "scope": "No rawEEG/checkpoints/private journals; no new training. Scientific code snapshots preserved; public metadata only redacts machine paths/host/user fields.",
+  "files": {
+    "extensions/studies/lee54/source/lee_core.py": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "code/lee_core.py",
+      "source_sha256": "5614c5fc08a1ed4e5f57596241d4dfafe5df5c027b8a17dce166108b8abd2638",
+      "copy_sha256": "5614c5fc08a1ed4e5f57596241d4dfafe5df5c027b8a17dce166108b8abd2638",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/lee54/source/lee_data.py": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "code/lee_data.py",
+      "source_sha256": "49b4326d390f9f5d4bf363e829a41f8b8902bf668033fab3439ac61ca4184740",
+      "copy_sha256": "49b4326d390f9f5d4bf363e829a41f8b8902bf668033fab3439ac61ca4184740",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/lee54/source/lee_train.py": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "code/lee_train.py",
+      "source_sha256": "38e205bf740dc20dc92be6263f3b3aa36fc4649721985c63f7273fba0f6455a1",
+      "copy_sha256": "38e205bf740dc20dc92be6263f3b3aa36fc4649721985c63f7273fba0f6455a1",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/lee54/source/verify_adapter.py": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "code/verify_adapter.py",
+      "source_sha256": "28a4564d9e5e3a886946dfb5139b3a1a4eca0e35449a265326bf6ca510354991",
+      "copy_sha256": "28a4564d9e5e3a886946dfb5139b3a1a4eca0e35449a265326bf6ca510354991",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/lee54/source/ADAPTER_README.md": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "code/ADAPTER_README.md",
+      "source_sha256": "686f09adc6b8afbab1a3020bfab026e64b881b41b6c9fc03b1e1edb5263b3247",
+      "copy_sha256": "686f09adc6b8afbab1a3020bfab026e64b881b41b6c9fc03b1e1edb5263b3247",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "reference/new_studies_results.zip!lee54/tables/condition_summary.csv": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "final_analysis/condition_summary.csv",
+      "source_sha256": "783cca31bc8c0bf3fc67d3cbb01647b4d4d110f329f2227ef6b4bdf742051a1a",
+      "public_sha256": "783cca31bc8c0bf3fc67d3cbb01647b4d4d110f329f2227ef6b4bdf742051a1a",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!lee54/tables/final_analysis.json": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "final_analysis/final_analysis.json",
+      "source_sha256": "99cf69ea058386bce96710db223473a14a05da04c4c006153146dea35b4f98c3",
+      "public_sha256": "99cf69ea058386bce96710db223473a14a05da04c4c006153146dea35b4f98c3",
+      "transformation": "JSON path/host redaction only"
+    },
+    "reference/new_studies_results.zip!lee54/tables/five_paired_contrasts_holm.csv": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "final_analysis/five_paired_contrasts_holm.csv",
+      "source_sha256": "72bec700fd7e6023a20de188b0e8b4c16619204f4b09157da15f169d077430af",
+      "public_sha256": "72bec700fd7e6023a20de188b0e8b4c16619204f4b09157da15f169d077430af",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!lee54/tables/participant_seed_averages.csv": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "final_analysis/participant_seed_averages.csv",
+      "source_sha256": "39a69f7d5c51985c3de5c492d94a7944718905cb964cd0f57b42027643498600",
+      "public_sha256": "39a69f7d5c51985c3de5c492d94a7944718905cb964cd0f57b42027643498600",
+      "transformation": "byte-identical"
+    },
+    "extensions/studies/lee_calibration80_20/source/calibration_math.py": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "code/calibration_math.py",
+      "source_sha256": "8d9eb72b253906221a86fe2f602d41b584d25d46df7b72ef68081ee58d4b7356",
+      "copy_sha256": "8d9eb72b253906221a86fe2f602d41b584d25d46df7b72ef68081ee58d4b7356",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/lee_calibration80_20/source/calibration_runner.py": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "code/calibration_runner.py",
+      "source_sha256": "7daa0dbafb0e2f7e0429b109e0a78851ea8cb51b31ce3d8d6b319736d3cadfd9",
+      "copy_sha256": "7daa0dbafb0e2f7e0429b109e0a78851ea8cb51b31ce3d8d6b319736d3cadfd9",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/lee_calibration80_20/source/lee_core.py": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "code/lee_core.py",
+      "source_sha256": "5614c5fc08a1ed4e5f57596241d4dfafe5df5c027b8a17dce166108b8abd2638",
+      "copy_sha256": "5614c5fc08a1ed4e5f57596241d4dfafe5df5c027b8a17dce166108b8abd2638",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/lee_calibration80_20/source/lee_data.py": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "code/lee_data.py",
+      "source_sha256": "49b4326d390f9f5d4bf363e829a41f8b8902bf668033fab3439ac61ca4184740",
+      "copy_sha256": "49b4326d390f9f5d4bf363e829a41f8b8902bf668033fab3439ac61ca4184740",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/lee_calibration80_20/source/final_calibration_analysis.py": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "analysis/final_calibration_analysis.py",
+      "source_sha256": "43e86d681e926aa6ca27f18fcc0567932591877adae075165c7b0499aab2165c",
+      "copy_sha256": "43e86d681e926aa6ca27f18fcc0567932591877adae075165c7b0499aab2165c",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/lee_calibration80_20/source/SCIENTIFIC_CONFIG-V1.0.json": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "code/SCIENTIFIC_CONFIG-V1.0.json",
+      "source_sha256": "532b2b161be9392f067eb32c9a8212dd768730606b6f131d0334ff9bd9f081df",
+      "copy_sha256": "532b2b161be9392f067eb32c9a8212dd768730606b6f131d0334ff9bd9f081df",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "reference/new_studies_results.zip!lee_calibration80_20/tables/CALIBRATION_RESULTS-V1.0.json": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "final_analysis/CALIBRATION_RESULTS-V1.0.json",
+      "source_sha256": "bdca98476fcff5bbd946beb7a0f29fdb535a19d0f5f6d65a168c47d6b121344d",
+      "public_sha256": "bdca98476fcff5bbd946beb7a0f29fdb535a19d0f5f6d65a168c47d6b121344d",
+      "transformation": "JSON path/host redaction only"
+    },
+    "reference/new_studies_results.zip!lee_calibration80_20/tables/KALIBRASYON_SONUC_OZETI-V1.0.txt": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "final_analysis/KALIBRASYON_SONUC_OZETI-V1.0.txt",
+      "source_sha256": "63dd67faf9a6ea746406ba1a5a2605413445359691af01f7013c156c5e6d3728",
+      "public_sha256": "63dd67faf9a6ea746406ba1a5a2605413445359691af01f7013c156c5e6d3728",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!lee_calibration80_20/tables/participant_metrics.csv": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "final_analysis/participant_metrics.csv",
+      "source_sha256": "aabc6689fe7375f8bc1530372f02987353ceb02be9ef92c93917eac964f1698a",
+      "public_sha256": "aabc6689fe7375f8bc1530372f02987353ceb02be9ef92c93917eac964f1698a",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!lee_calibration80_20/tables/run_metrics.csv": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "final_analysis/run_metrics.csv",
+      "source_sha256": "2d4a680d6f7da7215416e161b0e5e5fc43884565c1a3f239efabfd38ba7ca6af",
+      "public_sha256": "2d4a680d6f7da7215416e161b0e5e5fc43884565c1a3f239efabfd38ba7ca6af",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!lee_calibration80_20/tables/temperatures.csv": {
+      "source_study": "EEG_KALIBRASYON_KONTROLU-V1.0",
+      "source_relative_path": "final_analysis/temperatures.csv",
+      "source_sha256": "6214cae70dee174d27e42600d00a57fb4c349e7243fee6f3022711de50e3acf2",
+      "public_sha256": "6214cae70dee174d27e42600d00a57fb4c349e7243fee6f3022711de50e3acf2",
+      "transformation": "byte-identical"
+    },
+    "extensions/studies/shu_2x2/source/campaign.py": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "code/campaign.py",
+      "source_sha256": "636cebd69e7681e300b14658f9b7f6212edffe877f762309eefc4d0082162e0e",
+      "copy_sha256": "636cebd69e7681e300b14658f9b7f6212edffe877f762309eefc4d0082162e0e",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/shu_2x2/source/classical.py": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "code/classical.py",
+      "source_sha256": "dedfeb38c39425275bb5fc166f0961dcb8909879b5a56011cf61872c61c79a2d",
+      "copy_sha256": "dedfeb38c39425275bb5fc166f0961dcb8909879b5a56011cf61872c61c79a2d",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/shu_2x2/source/classifiers_metrics.py": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "code/classifiers_metrics.py",
+      "source_sha256": "d1d0300cd7aab0e1b113747e71698e0418edf92af4d20b926875128a7732cd52",
+      "copy_sha256": "d1d0300cd7aab0e1b113747e71698e0418edf92af4d20b926875128a7732cd52",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/shu_2x2/source/filterbank.py": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "code/filterbank.py",
+      "source_sha256": "358eeb4e6b06e233349c0fb42336a5970275fba9e5d9f78119338f935854922a",
+      "copy_sha256": "358eeb4e6b06e233349c0fb42336a5970275fba9e5d9f78119338f935854922a",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/shu_2x2/source/full_data.py": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "code/full_data.py",
+      "source_sha256": "9d764dc1befe00ef1c0e3717ac41c6e2900ff3f67198bc413b8a89da9ad4862c",
+      "copy_sha256": "9d764dc1befe00ef1c0e3717ac41c6e2900ff3f67198bc413b8a89da9ad4862c",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/shu_2x2/source/models.py": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "code/models.py",
+      "source_sha256": "10ed8f39ef02f46cc4d09e5b5629adf8f03489a9630382bb36b64daf8aa3a7b3",
+      "copy_sha256": "10ed8f39ef02f46cc4d09e5b5629adf8f03489a9630382bb36b64daf8aa3a7b3",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/shu_2x2/source/training.py": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "code/training.py",
+      "source_sha256": "f14d1a7958c28fa7637b06978fe7579c3d7e4d324f35ccb736236384fb020235",
+      "copy_sha256": "f14d1a7958c28fa7637b06978fe7579c3d7e4d324f35ccb736236384fb020235",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/shu_2x2/source/walsh_codes.py": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "code/walsh_codes.py",
+      "source_sha256": "b2e1aead702f91c48a46aed481efd004d19aa8455aa2e4b4bd1d61bd47acf2c4",
+      "copy_sha256": "b2e1aead702f91c48a46aed481efd004d19aa8455aa2e4b4bd1d61bd47acf2c4",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "extensions/studies/shu_2x2/source/final_analysis.py": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "analysis/final_analysis.py",
+      "source_sha256": "aece974565240e409517d0b2011dc1e47c0026854ccc68c0e29e86495e7020b4",
+      "copy_sha256": "aece974565240e409517d0b2011dc1e47c0026854ccc68c0e29e86495e7020b4",
+      "transformation": "byte-identical scientific source snapshot; historical campaign gates are not claimed portable"
+    },
+    "reference/new_studies_results.zip!shu_2x2/tables/condition_summaries-V1.0.csv": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "final_analysis/condition_summaries-V1.0.csv",
+      "source_sha256": "2dc729207f530e09d4841a26f602e38c421760c8eec0439d425650ba53ba311c",
+      "public_sha256": "2dc729207f530e09d4841a26f602e38c421760c8eec0439d425650ba53ba311c",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!shu_2x2/tables/Day2_Holm5-V1.0.csv": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "final_analysis/Day2_Holm5-V1.0.csv",
+      "source_sha256": "1bae088a2fe6909b3258a1b9a469e54f162fde46904c29c7246e81ec2d7760e2",
+      "public_sha256": "1bae088a2fe6909b3258a1b9a469e54f162fde46904c29c7246e81ec2d7760e2",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!shu_2x2/tables/FBCNET_RESULTS-V1.0.json": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "final_analysis/FBCNET_RESULTS-V1.0.json",
+      "source_sha256": "1fbcf06221177235c78a11c5639eb6df29e1fb1b937149b9c406e6acd9620913",
+      "public_sha256": "bd773cbb4d1e16c2e9aa3eb0afd7e35c945206bedea330f961395a1db76ab29d",
+      "transformation": "JSON path/host redaction only"
+    },
+    "reference/new_studies_results.zip!shu_2x2/tables/model_day_metrics-V1.0.csv": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "final_analysis/model_day_metrics-V1.0.csv",
+      "source_sha256": "b9faec0040dd4833485d90e155daec186715d497e5eacea91fbf7e4523740de5",
+      "public_sha256": "b9faec0040dd4833485d90e155daec186715d497e5eacea91fbf7e4523740de5",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!shu_2x2/tables/participant_means-V1.0.csv": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "final_analysis/participant_means-V1.0.csv",
+      "source_sha256": "46f12aab92e35ba12f92e14c3e53de590bfe5e9745fa08d3b9b899a157188d40",
+      "public_sha256": "46f12aab92e35ba12f92e14c3e53de590bfe5e9745fa08d3b9b899a157188d40",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!shu_2x2/tables/RESULTS_README-V1.0.txt": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "final_analysis/RESULTS_README-V1.0.txt",
+      "source_sha256": "752f45d93dee10e5ab8ebade71283bcf3e049ac19c29b426ef4d9c05671812df",
+      "public_sha256": "752f45d93dee10e5ab8ebade71283bcf3e049ac19c29b426ef4d9c05671812df",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!shu_2x2/tables/source_CV_validation-V1.0.csv": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "final_analysis/source_CV_validation-V1.0.csv",
+      "source_sha256": "24b45eb51b55908f9cb0604f7c3a9e82a58940c380a6a304e63743a66261f880",
+      "public_sha256": "24b45eb51b55908f9cb0604f7c3a9e82a58940c380a6a304e63743a66261f880",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!shu_2x2/tables/temperature_audit-V1.0.csv": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "final_analysis/temperature_audit-V1.0.csv",
+      "source_sha256": "726b5c00a7bfce19055700ccbad5292c4ffff6f9c33fa078c1c4adf1f588e71f",
+      "public_sha256": "726b5c00a7bfce19055700ccbad5292c4ffff6f9c33fa078c1c4adf1f588e71f",
+      "transformation": "byte-identical"
+    },
+    "reference/new_studies_results.zip!shu_2x2/tables/training_costs-V1.0.csv": {
+      "source_study": "SHU_FBCNET_KARSILASTIRMA-TAM_DENEY-V1.0",
+      "source_relative_path": "final_analysis/training_costs-V1.0.csv",
+      "source_sha256": "8537ec3214d6dc3f1e5305ca3d87787fa9350329668343fc7014761241ff68bd",
+      "public_sha256": "8537ec3214d6dc3f1e5305ca3d87787fa9350329668343fc7014761241ff68bd",
+      "transformation": "byte-identical"
+    },
+    "extensions/studies/lee54/source/final_analysis.py": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0/code/analysis/final_analysis.py",
+      "source_sha256": "86749d8abca6b4138ef93347c4e906a91cd6af275055fcab7b8c29677e77517f",
+      "copy_sha256": "86749d8abca6b4138ef93347c4e906a91cd6af275055fcab7b8c29677e77517f",
+      "transformation": "byte-identical source"
+    },
+    "extensions/studies/lee54/source/prepare_lee2019.py": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0/prepare/prepare_lee2019.py",
+      "source_sha256": "ffbb7b6cdda83187dc82c64d0f20e04a6ff03470bedc2a09e9a164aff68e968b",
+      "copy_sha256": "ffbb7b6cdda83187dc82c64d0f20e04a6ff03470bedc2a09e9a164aff68e968b",
+      "transformation": "byte-identical source"
+    },
+    "extensions/studies/lee54/source/classical_reference.py": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0/prepare/classical_reference.py",
+      "source_sha256": "7a58a2490b1a2c8d1a7d9347276d0401395180e085d01366c980f685d157f619",
+      "copy_sha256": "7a58a2490b1a2c8d1a7d9347276d0401395180e085d01366c980f685d157f619",
+      "transformation": "byte-identical source"
+    },
+    "extensions/studies/lee54/source/NPZ_CONTRACT.json": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0/prepare/NPZ_CONTRACT.json",
+      "source_sha256": "072c4b074075a4e459b7d0af4dc9353c6d6e448402b67397cc4ef6e772c4a3bb",
+      "copy_sha256": "072c4b074075a4e459b7d0af4dc9353c6d6e448402b67397cc4ef6e772c4a3bb",
+      "transformation": "byte-identical source"
+    },
+    "extensions/studies/lee54/source/CLASSICAL_REFERENCE_SPEC.json": {
+      "source_study": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0",
+      "source_relative_path": "LEE2019_BAGIMSIZ_DOGRULAMA-V1.0/prepare/CLASSICAL_REFERENCE_SPEC.json",
+      "source_sha256": "a1601d493881e9d38f1f057912ad9b7ff4b4396d825b56d3813034f55bfb5c3f",
+      "copy_sha256": "a1601d493881e9d38f1f057912ad9b7ff4b4396d825b56d3813034f55bfb5c3f",
+      "transformation": "byte-identical source"
+    },
+    "extensions/studies/shu_2x2/events.zip": {
+      "source_study": "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0",
+      "source_relative_path": "MA2022_HIZALAMASIZ_AKTARIM-TAM_DENEY-V1.0/data/source_metadata/sources/events.zip",
+      "source_sha256": "03460474a8696775199d32c22324d5d7f0bd6b7894fe072e2a8af63bf6c093b6",
+      "copy_sha256": "03460474a8696775199d32c22324d5d7f0bd6b7894fe072e2a8af63bf6c093b6",
+      "transformation": "byte-identical source"
+    },
+    "extensions/studies/lee_w4/source/code/lee_core.py": {
+      "source_study": "LEE2019_ANKRAJ_KAPI_AYRISTIRMA-V1.0",
+      "source_relative_path": "code/lee_core.py",
+      "source_sha256": "bf1639f7afb931a2d7fa5c0ff7de10daaecd6b85a8ab539efd4809e0ca09ed48",
+      "copy_sha256": "bf1639f7afb931a2d7fa5c0ff7de10daaecd6b85a8ab539efd4809e0ca09ed48",
+      "transformation": "byte-identical root-frozen W4 source; fresh public driver changes only path/protocol preflight"
+    },
+    "extensions/studies/lee_w4/source/code/lee_data.py": {
+      "source_study": "LEE2019_ANKRAJ_KAPI_AYRISTIRMA-V1.0",
+      "source_relative_path": "code/lee_data.py",
+      "source_sha256": "49b4326d390f9f5d4bf363e829a41f8b8902bf668033fab3439ac61ca4184740",
+      "copy_sha256": "49b4326d390f9f5d4bf363e829a41f8b8902bf668033fab3439ac61ca4184740",
+      "transformation": "byte-identical root-frozen W4 source; fresh public driver changes only path/protocol preflight"
+    },
+    "extensions/studies/lee_w4/source/code/training.py": {
+      "source_study": "LEE2019_ANKRAJ_KAPI_AYRISTIRMA-V1.0",
+      "source_relative_path": "code/training.py",
+      "source_sha256": "796602ecdf68673f9fa70d64f0c8e78ea44cf26158fc007b31d356a8799669af",
+      "copy_sha256": "796602ecdf68673f9fa70d64f0c8e78ea44cf26158fc007b31d356a8799669af",
+      "transformation": "byte-identical root-frozen W4 source; fresh public driver changes only path/protocol preflight"
+    },
+    "extensions/studies/lee_w4/source/code/campaign.py": {
+      "source_study": "LEE2019_ANKRAJ_KAPI_AYRISTIRMA-V1.0",
+      "source_relative_path": "code/campaign.py",
+      "source_sha256": "d53a5e57127b18e742b3b53bb8a33b7ef0d432d92fdca8f4affa4547b343aeb8",
+      "copy_sha256": "d53a5e57127b18e742b3b53bb8a33b7ef0d432d92fdca8f4affa4547b343aeb8",
+      "transformation": "byte-identical root-frozen W4 source; fresh public driver changes only path/protocol preflight"
+    },
+    "extensions/studies/lee_w4/source/ops/run_campaign-V1.0.py": {
+      "source_study": "LEE2019_ANKRAJ_KAPI_AYRISTIRMA-V1.0",
+      "source_relative_path": "ops/run_campaign-V1.0.py",
+      "source_sha256": "b237ae3760aba7e97d0a7bc969d4c4a18fcd549b7555b4f1ce0eb2869c5bd15e",
+      "copy_sha256": "b237ae3760aba7e97d0a7bc969d4c4a18fcd549b7555b4f1ce0eb2869c5bd15e",
+      "transformation": "byte-identical root-frozen W4 source; fresh public driver changes only path/protocol preflight"
+    },
+    "extensions/studies/lee_w4/source/ops/monitor_campaign-V1.0.py": {
+      "source_study": "LEE2019_ANKRAJ_KAPI_AYRISTIRMA-V1.0",
+      "source_relative_path": "ops/monitor_campaign-V1.0.py",
+      "source_sha256": "7b3990a82142da65a468c2bce334dddb0d9ff70f418492c17003034dd60c5607",
+      "copy_sha256": "7b3990a82142da65a468c2bce334dddb0d9ff70f418492c17003034dd60c5607",
+      "transformation": "byte-identical root-frozen W4 source; fresh public driver changes only path/protocol preflight"
+    },
+    "extensions/studies/lee_w4/source/analysis/final_analysis.py": {
+      "source_study": "LEE2019_ANKRAJ_KAPI_AYRISTIRMA-V1.0",
+      "source_relative_path": "analysis/final_analysis.py",
+      "source_sha256": "925079efadbf9aac4ee0f5fc4a793dce192ec99c80f1b3ac3cd37ba7ba1070f5",
+      "copy_sha256": "925079efadbf9aac4ee0f5fc4a793dce192ec99c80f1b3ac3cd37ba7ba1070f5",
+      "transformation": "byte-identical root-frozen W4 source; fresh public driver changes only path/protocol preflight"
+    }
+  }
+}
