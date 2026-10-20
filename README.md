@@ -4,6 +4,8 @@ Code and retained results for **Walsh-coded and negotiated targets for motor ima
 
 **Version 2.2.0 release scope.** The additional material accompanies an IEEE Access manuscript revision under preparation. This description does not imply journal acceptance or publication. This v2.2.0 release contains the completed 270-fit W4 control and its independent final audit; the older [v2.1.0 DOI](https://doi.org/10.5281/zenodo.23290274) identifies only that earlier release.
 
+**Permanent archive for version 2.2.0:** [DOI 10.5281/zenodo.23504655](https://doi.org/10.5281/zenodo.23504655). This is the software/results archive DOI, not a journal manuscript DOI.
+
 The archive keeps the two original, matched-budget experiments (615 CSP–CNN and 800 EEGNet fits in the same 32 people) and adds separate evidence:
 
 | Material | Independent analysis unit | Scope |
