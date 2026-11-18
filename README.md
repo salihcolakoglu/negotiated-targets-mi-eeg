@@ -2,9 +2,9 @@
 
 Code and retained results for **Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence**, by Salih Çolakoğlu, Mustafa Onat and Nuri Korhan.
 
-**Version 2.2.0 release scope.** The additional material accompanies an IEEE Access manuscript revision under preparation. This description does not imply journal acceptance or publication. This v2.2.0 release contains the completed 270-fit W4 control and its independent final audit; the older [v2.1.0 DOI](https://doi.org/10.5281/zenodo.23290274) identifies only that earlier release.
+**Version 2.3.0 release scope.** This release adds the three supplementary data files of manuscript version 1.13 in [`supplementary_data/`](supplementary_data/README.md): the participant-level records of Experiments 1–3, the S1/W5 control with the record-based summaries, classical-pipeline, resource and equivalence analyses, and the three additional sensitivity analyses. The code, the retained results and the verification commands of version 2.2.0 are unchanged. The material accompanies a manuscript submitted to IEEE Access; this description does not imply journal acceptance or publication.
 
-**Permanent archive for version 2.2.0:** [DOI 10.5281/zenodo.23504655](https://doi.org/10.5281/zenodo.23504655). This is the software/results archive DOI, not a journal manuscript DOI.
+**Archives.** The Zenodo record of version 2.3.0 is listed in the release notes. Version 2.2.0 remains archived at [DOI 10.5281/zenodo.23504655](https://doi.org/10.5281/zenodo.23504655); it contains the completed 270-fit W4 control and its independent final audit, and the older [v2.1.0 DOI](https://doi.org/10.5281/zenodo.23290274) identifies only that earlier release. These are software/results archive DOIs, not journal manuscript DOIs.
 
 The archive keeps the two original, matched-budget experiments (615 CSP–CNN and 800 EEGNet fits in the same 32 people) and adds separate evidence:
 
@@ -104,6 +104,7 @@ Accuracy uses nearest-codeword decoding for Walsh outputs. Probability scores us
 - `src/eegnet/`: EEGNet preparation and five training conditions.
 - `src/verify_results.py`, `src/summarize.py`: checking and analysis.
 - `reference/`: retained results/predictions and the optional CSP reference.
+- `supplementary_data/`: the three supplementary data files of manuscript version 1.13 (added in v2.3.0).
 
 The original commands cover the two original matched-budget experiments and their specified classical reference. The later studies have separate commands, protocols and result archives under `extensions/`; their sample sizes and statistical families are not merged with the original experiments.
 
@@ -113,13 +114,13 @@ Software is distributed under **MIT**. The authors' original documentation, gene
 
 ## How to cite
 
-Use [`CITATION.cff`](CITATION.cff) for the software version actually used. The candidate metadata names version 2.2.0 without assigning the older release's DOI to it. The new DOI will be linked only after the release and its Zenodo record have been verified.
+Use [`CITATION.cff`](CITATION.cff) for the software version actually used. The candidate metadata names version 2.3.0 without assigning the older release's DOI to it. The new DOI will be linked only after the release and its Zenodo record have been verified.
 
 The historical [v2.1.0 software archive](https://doi.org/10.5281/zenodo.23290274) remains available with its original code, results and citation. Its DOI is a software DOI, not a journal article DOI.
 
 The accompanying study is:
 
-> Çolakoğlu, S., Onat, M., and Korhan, N. (2026). Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence. Manuscript prepared for IEEE Access review.
+> Çolakoğlu, S., Onat, M., and Korhan, N. (2026). Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence. Manuscript submitted to IEEE Access.
 
 Please cite the relevant original data sources in [dataset attribution and access](DATA_ATTRIBUTION.md). Academic citation and software change-description requests do not add conditions to MIT; attribution and modification notices apply to original non-code material within CC BY 4.0's scope.
 

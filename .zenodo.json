@@ -1,8 +1,8 @@
 {
   "title": "Walsh-coded and negotiated targets for motor imagery EEG decoding: code and retained results",
   "upload_type": "software",
-  "publication_date": "2026-10-20",
-  "version": "2.2.0",
+  "publication_date": "2026-11-18",
+  "version": "2.3.0",
   "access_right": "open",
   "license": "mit",
   "creators": [
@@ -19,7 +19,7 @@
       "affiliation": "Burdur Mehmet Akif Ersoy University, Burdur, Türkiye"
     }
   ],
-  "description": "<p>Software and retained results for <em>Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence</em>, by Salih Çolakoğlu, Mustafa Onat and Nuri Korhan. The accompanying manuscript is being prepared for IEEE Access review; this software record is not a journal publication.</p><p>The original 1,415 CSP–CNN/EEGNet fits and 800 EEGNet prediction files are retained. Added studies comprise 1,350 Lee2019 EEGNet test records and 54 classical references, a separate 1,350-model 80/20 calibration control, and 1,320 later-day SHU tests from an architecture/output comparison. The completed 270-fit W4 ungated-anchoring control, its independently audited results, and its fresh execution path are included. Its two exploratory accuracy comparisons remain separate from the earlier five-comparison family. Participant groups, information budgets and statistical families remain separate.</p><p>Portable prepared-input training tools, scientific source snapshots and no-training prediction-verification commands are provided. Raw EEG recordings, prepared signal caches, model checkpoints and private correspondence are not included. The original code and stored-results archive retain their bytes.</p><p>MIT applies to software. The authors' original documentation and generated numerical results use CC BY 4.0. Original BNCI labels retain CC BY-ND 4.0, Lee/OpenBMI labels retain CC0-1.0, and SHU labels retain CC BY 4.0. The primary software-license field does not override this mixed scope. See LICENSING.md, DATA_ATTRIBUTION.md and third-party notices.</p><p>The v2.1.0 DOI 10.5281/zenodo.23290274 identifies the older archive only. This version is cited independently. The findings do not establish universal superiority, prevention of forgetting, or clinical readiness.</p>",
+  "description": "<p>Software and retained results for <em>Walsh-coded and negotiated targets for motor imagery EEG decoding: a controlled evaluation of accuracy and confidence</em>, by Salih Çolakoğlu, Mustafa Onat and Nuri Korhan. The accompanying manuscript is submitted to IEEE Access; this software record is not a journal publication.</p><p>Version 2.3.0 adds the folder supplementary_data with the three supplementary data files of manuscript version 1.13: participant-level records of Experiments 1–3, the S1/W5 control with record-based summaries, classical-pipeline, resource and equivalence analyses, and three additional sensitivity analyses. Code, retained results and verification commands are unchanged from version 2.2.0 (DOI 10.5281/zenodo.23504655).</p><p>The original 1,415 CSP–CNN/EEGNet fits and 800 EEGNet prediction files are retained. Added studies comprise 1,350 Lee2019 EEGNet test records and 54 classical references, a separate 1,350-model 80/20 calibration control, and 1,320 later-day SHU tests from an architecture/output comparison. The completed 270-fit W4 ungated-anchoring control, its independently audited results, and its fresh execution path are included. Its two exploratory accuracy comparisons remain separate from the earlier five-comparison family. Participant groups, information budgets and statistical families remain separate.</p><p>Portable prepared-input training tools, scientific source snapshots and no-training prediction-verification commands are provided. Raw EEG recordings, prepared signal caches, model checkpoints and private correspondence are not included. The original code and stored-results archive retain their bytes.</p><p>MIT applies to software. The authors' original documentation and generated numerical results use CC BY 4.0. Original BNCI labels retain CC BY-ND 4.0, Lee/OpenBMI labels retain CC0-1.0, and SHU labels retain CC BY 4.0. The primary software-license field does not override this mixed scope. See LICENSING.md, DATA_ATTRIBUTION.md and third-party notices.</p><p>The v2.2.0 DOI 10.5281/zenodo.23504655 and the v2.1.0 DOI 10.5281/zenodo.23290274 identify the older archives only. This version is cited independently. The findings do not establish universal superiority, prevention of forgetting, or clinical readiness.</p>",
   "keywords": [
     "motor imagery",
     "EEG decoding",
@@ -35,9 +35,14 @@
       "scheme": "url"
     },
     {
-      "identifier": "https://github.com/salihcolakoglu/negotiated-targets-mi-eeg/releases/tag/v2.2.0",
+      "identifier": "https://github.com/salihcolakoglu/negotiated-targets-mi-eeg/releases/tag/v2.3.0",
       "relation": "isSupplementTo",
       "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.23504655",
+      "relation": "isNewVersionOf",
+      "scheme": "doi"
     }
   ],
   "references": [
